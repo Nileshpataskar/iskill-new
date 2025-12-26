@@ -1,0 +1,66 @@
+import React from 'react'
+
+interface ServiceCardProps {
+    image: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    link: string;
+    icon?: React.ReactNode;
+}
+
+const ServiceCard = ({ image, title, subtitle, description, link, icon }: ServiceCardProps) => {
+    // Default icon if none provided
+    const defaultIcon = (
+        <svg className="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+    );
+
+    return (
+        <div className="relative w-full h-[400px] md:h-[450px] lg:h-[500px] rounded-lg overflow-hidden group cursor-pointer">
+            {/* Background Image */}
+            <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105"
+                style={{ backgroundImage: `url(${image})` }}
+            >
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/70 transition-colors duration-300" />
+                {/* Blur effect overlay */}
+                <div className="absolute inset-0 backdrop-blur-[2px]" />
+            </div>
+
+            {/* Content */}
+            <div className="relative h-full flex flex-col justify-between p-6 md:p-8 lg:p-10 text-white">
+                {/* Top Section - Icon */}
+                <div className="flex justify-end">
+                    <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center border-2 border-white/80 rounded-lg backdrop-blur-sm group-hover:border-white transition-colors duration-300">
+                        {icon || defaultIcon}
+                    </div>
+                </div>
+
+                {/* Bottom Section - Text Content */}
+                <div className="flex flex-col gap-3 md:gap-4">
+                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                        {title}
+                    </h3>
+                    <p className="text-lg md:text-xl lg:text-2xl text-white/90 font-medium">
+                        {subtitle}
+                    </p>
+                    <p className="text-base md:text-lg text-white/80 leading-relaxed max-w-2xl">
+                        {description}
+                    </p>
+                    <a
+                        href={link}
+                        className="inline-flex items-center text-base md:text-lg font-semibold text-white mt-2 group/link"
+                    >
+                        Learn More
+                        <span className="ml-2 group-hover/link:translate-x-1 transition-transform duration-200">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default ServiceCard
