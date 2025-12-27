@@ -2,7 +2,7 @@
 
 const GlobalLearning = () => {
     return (
-        <section className="relative bg-cover bg-center py-20 h-[80vh] flex items-center bg-blue-50" style={{ backgroundImage: 'url(/About/WorldMap.png)' }}>
+        <section className="relative bg-cover bg-center py-20 h-[80vh] flex items-center bg-blue-50" style={{ backgroundImage: 'url(/about/WorldMap.png)' }}>
             <div className="relative z-10 max-w-3xl mx-auto text-center text-white px-4">
                 <div className="bg-[#0D1425]/80 p-8 rounded-lg shadow-lg">
                     <h2 className="text-2xl md:text-3xl font-bold mb-4">

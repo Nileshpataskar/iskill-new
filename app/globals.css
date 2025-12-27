@@ -37,3 +37,46 @@ body {
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
+
+/* Outcome carousel active slide styling */
+.outcome-swiper .swiper-slide-active .outcome-card {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: 
+    0 20px 25px -5px rgba(59, 130, 246, 0.2),
+    0 10px 10px -5px rgba(59, 130, 246, 0.1),
+    0 0 0 1px rgba(59, 130, 246, 0.05) !important;
+  background: #f3f4f6;
+  height: fit-content;
+}
+
+/* Side slides - make them stretch to match */
+.outcome-swiper .swiper-slide:not(.swiper-slide-active) .outcome-card {
+  height: 100%;
+}
+
+/* Side slides - make them smaller and less prominent */
+.outcome-swiper .swiper-slide:not(.swiper-slide-active) .outcome-card {
+  transform: scale(0.85);
+  opacity: 0.6;
+  filter: blur(0.5px);
+}
+
+.outcome-swiper .swiper-slide {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease, filter 0.5s ease;
+  height: auto;
+  display: flex;
+  align-items: stretch;
+  padding-bottom: 3rem;
+}
+
+/* Ensure slides maintain proper height */
+.outcome-swiper .swiper-slide-active {
+  z-index: 2;
+}
+
+/* Improve card hover state for side cards */
+.outcome-swiper .swiper-slide:not(.swiper-slide-active):hover .outcome-card {
+  opacity: 0.75;
+  filter: blur(0);
+}

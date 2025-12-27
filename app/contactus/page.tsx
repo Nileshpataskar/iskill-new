@@ -1,10 +1,10 @@
 'use client'
 
-import TalkToOurTeam from "../component/about/TalkToOurTeam"
-import ContactForm from "../src/contactUs/contactForm"
-import HeroSection from "../src/contactUs/heroSection"
-import MapPage from "../src/contactUs/mapPage"
-import TalkAndSend from "../src/contactUs/TalkAndSend"
+import TalkToOurTeam from "../src/component/about/TalkToOurTeam"
+import ContactForm from "../src/component/contactUs/contactForm"
+import HeroSection from "../src/component/contactUs/heroSection"
+import MapPage from "../src/component/contactUs/mapPage"
+import TalkAndSend from "../src/component/contactUs/TalkAndSend"
 
 
 

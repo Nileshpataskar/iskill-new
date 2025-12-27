@@ -1,17 +1,17 @@
 'use client'
 
-import HeroSection from '@/app/component/about/HeroSection'
-import Statistics from '@/app/component/about/Statistics'
-import GlobalLearning from '@/app/component/about/GlobalLearning'
-import Clientele from '@/app/src/landing/clientele'
-import History from '@/app/component/about/History'
-import Potential from '@/app/component/about/Potential'
-import NotLast from '@/app/component/NotLast'
-import ProductsServices from '@/app/component/about/ProductServices'
+import HeroSection from '@/app/src/component/about/HeroSection'
+import Statistics from '@/app/src/component/about/Statistics'
+import GlobalLearning from '@/app/src/component/about/GlobalLearning'
+import Clientele from '@/app/src/component/landing/clientele'
+import History from '@/app/src/component/about/History'
+import Potential from '@/app/src/component/about/Potential'
+import ProductsServices from '@/app/src/component/about/ProductServices'
+import NotLast from '../src/component/landing/notLast'
 
 const AboutPage = () => {
     return (
-        <div className=" md:px-32">
+        <div className=" ">
             <HeroSection />
             <Statistics />
             <GlobalLearning />

@@ -18,30 +18,21 @@ const ServiceCard = ({ image, title, subtitle, description, link, icon }: Servic
     );
 
     return (
-        <div className="relative w-full h-[400px] md:h-[450px] lg:h-[500px] rounded-lg overflow-hidden group cursor-pointer">
-            {/* Background Image */}
+        <div className="relative w-full h-[300px] md:h-[350px] lg:h-[350px] rounded-lg overflow-hidden group cursor-pointer">
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105"
                 style={{ backgroundImage: `url(${image})` }}
             >
-                {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/70 transition-colors duration-300" />
-                {/* Blur effect overlay */}
-                <div className="absolute inset-0 backdrop-blur-[2px]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent transition-all duration-300" />
             </div>
 
             {/* Content */}
             <div className="relative h-full flex flex-col justify-between p-6 md:p-8 lg:p-10 text-white">
-                {/* Top Section - Icon */}
-                <div className="flex justify-end">
-                    <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center border-2 border-white/80 rounded-lg backdrop-blur-sm group-hover:border-white transition-colors duration-300">
+                <div className="flex flex-col gap-1 md:gap-1">
+                    <div className="w-10 h-10 md:w-12 md:h-12 lg:w-12 lg:h-12 flex items-center justify-center  backdrop-blur-sm group-hover:border-white transition-colors duration-300">
                         {icon || defaultIcon}
                     </div>
-                </div>
-
-                {/* Bottom Section - Text Content */}
-                <div className="flex flex-col gap-3 md:gap-4">
-                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                    <h3 className="text-3xl md:text-4xl lg:text-4xl font-bold leading-tight">
                         {title}
                     </h3>
                     <p className="text-lg md:text-xl lg:text-2xl text-white/90 font-medium">
