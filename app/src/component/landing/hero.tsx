@@ -18,8 +18,8 @@ const Hero = () => {
 
                     {/* Right side - Text content */}
                     <div className='w-full md:w-1/2 h-96 md:h-125 lg:h-150 flex flex-col justify-center items-start'>
-                        <div className='max-w-xl'>
-                            <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 text-left'>
+                        <div className='max-w-full'>
+                            <h1 className='text-2xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6 text-left'>
                                 Shaping Skills. Powering Futures.
                             </h1>
                             <p className='text-base md:text-lg text-gray-700 mb-6 md:mb-8 leading-relaxed text-left'>

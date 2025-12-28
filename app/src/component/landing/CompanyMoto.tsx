@@ -4,7 +4,7 @@ const CompanyMoto = () => {
     return (
         <section className="w-full bg-white">
 
-            <div className='relative z-[10] flex flex-col md:flex-row max-w-7xl mx-auto gap-6 md:gap-12 lg:gap-16 px-4 md:px-6 lg:px-8 pb-40'>
+            <div className='relative z-10 flex flex-col md:flex-row max-w-7xl mx-auto gap-6 md:gap-12 lg:gap-16 px-4 md:px-6 lg:px-8 pb-40'>
 
                 <div className='w-full md:w-1/2 flex flex-col justify-center items-start'>
                     <div className='max-w-xl'>
