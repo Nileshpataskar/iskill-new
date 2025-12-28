@@ -80,21 +80,20 @@ const Header = () => {
     return (
         <header
             className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out ${isScrolled
-                ? 'rounded-xl m-4 bg-black/30 backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/30'
+                ? 'rounded-xl m-4 bg-black/30 backdrop-blur-lg border border-white/20 shadow-2xl shadow-black/30'
                 : 'bg-transparent'
                 }`}
         >
             {/* Gradient overlay for better text readability */}
-            <div className={`absolute inset-0 transition-opacity duration-500 ${isScrolled ? 'bg-gradient-to-r from-black/40 via-purple-900/30 to-black/40' : 'opacity-0'
+            <div className={`absolute inset-0 transition-opacity duration-500 ${isScrolled ? 'bg-linear-to-r from-black/40 via-purple-300/30 to-black/40' : 'opacity-0'
                 }`} />
 
             <div className="relative flex h-20 w-full max-w-full items-center justify-between px-4 md:px-40">
                 {/* Logo */}
-                <div className="flex items-center gap-2 z-10">
+                <a href='/' className="flex items-center gap-2 z-10">
                     <img src="/iskillLogo/17.png" alt="logo" className="w-40 drop-shadow-lg" />
-                </div>
+                </a>
 
-                {/* Desktop Navigation */}
                 <nav className="hidden gap-8 md:flex z-10  md:items-center">
                     {navItems.map((item, index) => (
                         <div key={index} className="relative group">
@@ -109,7 +108,7 @@ const Header = () => {
                                         const timeout = setTimeout(() => setActiveDropdown(null), 250); // increased delay
                                         setDropdownTimeout(timeout);
                                     }}
-                                    className="text-sm text-white hover:text-lime-300 transition-all duration-300 flex items-center gap-2 font-medium tracking-wide"
+                                    className="text-sm text-white hover:text-purple-300 transition-all duration-300 flex items-center gap-2 font-medium tracking-wide"
                                     style={{ position: 'relative', zIndex: 51 }}
                                 >
                                     {item.label}
@@ -147,8 +146,8 @@ const Header = () => {
                                                                 key={idx}
                                                                 href={`/solutions#${title.toLowerCase().replace(/\s+/g, '-')}`}
                                                                 className={`block px-7 py-3 text-white/90 transition-all duration-200 font-medium border-l-2 border-transparent rounded-xl
-                                  hover:bg-gradient-to-r hover:from-lime-400/10 hover:to-purple-400/10 hover:text-lime-300 hover:border-l-lime-400 hover:scale-[1.03]
-                                  ${isActive ? 'bg-lime-400/10 text-lime-300 border-l-lime-400' : ''}`}
+                                  hover:bg-linear-to-r hover:from-purple-400/10 hover:to-purple-400/10 hover:text-purple-300 hover:border-l-purple-400 hover:scale-[1.03]
+                                  ${isActive ? 'bg-purple-400/10 text-purple-300 border-l-purple-400' : ''}`}
                                                                 style={{ transition: 'transform 0.18s cubic-bezier(.4,2,.6,1)' }}
                                                             >
                                                                 {title}
@@ -164,8 +163,8 @@ const Header = () => {
                                                                 key={idx}
                                                                 href={`/success-stories?story=${storyId}`}
                                                                 className={`block px-7 py-3 text-white/90 transition-all duration-200 font-medium border-l-2 border-transparent rounded-xl
-                                  hover:bg-gradient-to-r hover:from-lime-400/10 hover:to-purple-400/10 hover:text-lime-300 hover:border-l-lime-400 hover:scale-[1.03]
-                                  ${isActive ? 'bg-lime-400/10 text-lime-300 border-l-lime-400' : ''}`}
+                                  hover:bg-gradient-to-r hover:from-purple-400/10 hover:to-purple-400/10 hover:text-purple-300 hover:border-l-purple-400 hover:scale-[1.03]
+                                  ${isActive ? 'bg-purple-400/10 text-purple-300 border-l-purple-400' : ''}`}
                                                                 style={{ transition: 'transform 0.18s cubic-bezier(.4,2,.6,1)' }}
                                                             >
                                                                 {title}
@@ -180,10 +179,10 @@ const Header = () => {
                             ) : (
                                 <a
                                     href={item.href}
-                                    className="text-sm text-white hover:text-lime-300 transition-all duration-300 font-medium tracking-wide relative group"
+                                    className="text-sm text-white hover:text-purple-300 transition-all duration-300 font-medium tracking-wide relative group"
                                 >
                                     {item.label}
-                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-lime-400 to-purple-400 transition-all duration-300 group-hover:w-full" />
+                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-purple-400 transition-all duration-300 group-hover:w-full" />
                                 </a>
                             )}
                         </div>
@@ -193,7 +192,7 @@ const Header = () => {
                 {/* Mobile Menu Button */}
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="md:hidden p-3 text-white hover:text-lime-300 transition-all duration-300 hover:scale-110 hover:bg-white/10 rounded-full group z-10"
+                    className="md:hidden p-3 text-white hover:text-purple-300 transition-all duration-300 hover:scale-110 hover:bg-white/10 rounded-full group z-10"
                     aria-label="Toggle mobile menu"
                 >
                     <div className="relative w-6 h-6">
@@ -213,8 +212,8 @@ const Header = () => {
                 <div className="bg-gradient-to-b from-black/95 via-purple-900/90 to-black/95 backdrop-blur-3xl border-t border-white/20 shadow-2xl">
                     {/* Decorative Elements */}
                     <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-r from-lime-400/20 via-purple-400/20 to-blue-400/20" />
-                        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-400/50 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 via-purple-400/20 to-blue-400/20" />
+                        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/50 to-transparent" />
                         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/50 to-transparent" />
                     </div>
 
@@ -225,7 +224,7 @@ const Header = () => {
                                     <div>
                                         <button
                                             onClick={() => handleDropdownToggle(item.dropdownKey!)}
-                                            className="w-full group flex items-center justify-between text-white hover:text-lime-300 transition-all duration-300 py-4 px-4 rounded-xl hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-lime-400/20 border border-transparent hover:border-lime-400/30"
+                                            className="w-full group flex items-center justify-between text-white hover:text-purple-300 transition-all duration-300 py-4 px-4 rounded-xl hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-purple-400/20 border border-transparent hover:border-purple-400/30"
                                         >
                                             <span className="text-lg font-medium">{item.label}</span>
                                             <svg
@@ -240,17 +239,17 @@ const Header = () => {
 
                                         {/* Mobile Dropdown */}
                                         {activeDropdown === item.dropdownKey && (
-                                            <div className="ml-4 mt-3 space-y-2 border-l-2 border-lime-400/40 pl-4">
+                                            <div className="ml-4 mt-3 space-y-2 border-l-2 border-purple-400/40 pl-4">
                                                 {item.dropdownKey === "solutions" ? (
                                                     solutionsItems.map((title, idx) => (
                                                         <a
                                                             key={idx}
                                                             href={`/solutions#${title.toLowerCase().replace(/\s+/g, '-')}`}
-                                                            className="block py-3 px-4 text-white/80 hover:text-lime-300 transition-all duration-300 rounded-lg hover:bg-white/10 hover:scale-105"
+                                                            className="block py-3 px-4 text-white/80 hover:text-purple-300 transition-all duration-300 rounded-lg hover:bg-white/10 hover:scale-105"
                                                             onClick={() => setIsMobileMenuOpen(false)}
                                                         >
                                                             <div className="flex items-center gap-3">
-                                                                <div className="w-2 h-2 bg-lime-400 rounded-full" />
+                                                                <div className="w-2 h-2 bg-purple-400 rounded-full" />
                                                                 <span className="font-medium">{title}</span>
                                                             </div>
                                                         </a>
@@ -262,7 +261,7 @@ const Header = () => {
                                                             <a
                                                                 key={idx}
                                                                 href={`/success-stories?story=${storyId}`}
-                                                                className="block py-3 px-4 text-white/90 hover:text-lime-300 transition-all duration-300 rounded-lg hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-purple-400/20"
+                                                                className="block py-3 px-4 text-white/90 hover:text-purple-300 transition-all duration-300 rounded-lg hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-purple-400/20"
                                                                 onClick={() => setIsMobileMenuOpen(false)}
                                                             >
                                                                 <div className="flex items-center gap-3">
@@ -279,7 +278,7 @@ const Header = () => {
                                 ) : (
                                     <a
                                         href={item.href}
-                                        className="group flex items-center gap-4 text-white hover:text-lime-300 transition-all duration-300 py-4 px-4 rounded-xl hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-lime-400/20 border border-transparent hover:border-lime-400/30"
+                                        className="group flex items-center gap-4 text-white hover:text-purple-300 transition-all duration-300 py-4 px-4 rounded-xl hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-purple-400/20 border border-transparent hover:border-purple-400/30"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                         style={{
                                             animationDelay: `${index * 100}ms`,
@@ -289,7 +288,7 @@ const Header = () => {
                                         <span className="text-lg font-medium group-hover:translate-x-2 transition-transform duration-300">
                                             {item.label}
                                         </span>
-                                        <span className="ml-auto opacity-0 group-hover:opacity-100 transition-all duration-300 text-lime-400">
+                                        <span className="ml-auto opacity-0 group-hover:opacity-100 transition-all duration-300 text-purple-400">
                                             →
                                         </span>
                                     </a>
@@ -303,7 +302,7 @@ const Header = () => {
                         <div className="h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
                         <div className="flex justify-center mt-6">
                             <div className="flex space-x-3">
-                                <div className="w-3 h-3 bg-lime-400 rounded-full animate-pulse" />
+                                <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse" />
                                 <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
                                 <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
                             </div>

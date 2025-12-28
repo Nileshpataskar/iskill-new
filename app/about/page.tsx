@@ -15,7 +15,7 @@ const AboutPage = () => {
             <HeroSection />
             <Statistics />
             <GlobalLearning />
-            <Clientele />
+            <Clientele background={false} />
             <History />
             <Potential />
             <ProductsServices />

@@ -12,9 +12,9 @@ const NotLast = () => {
                     If you've made it this far, you're clearly invested in growth and that's our favorite kind of person. Let's put your ambition to work with solutions that truly make a difference.
                 </p>
 
-                <button className='px-6 sm:px-8 py-3 sm:py-4 mt-4 sm:mt-6 border-2 border-white rounded-xl cursor-pointer hover:bg-white hover:text-[#161c2d] transition-all duration-300 font-semibold text-sm sm:text-base'>
+                <a href='/contactus' className='px-6 sm:px-8 py-3 sm:py-4 mt-4 sm:mt-6 border-2 border-white rounded-xl cursor-pointer hover:bg-white hover:text-[#161c2d] transition-all duration-300 font-semibold text-sm sm:text-base'>
                     Let's Make it Happen
-                </button>
+                </a>
             </div>
             <span className='my-14 h-[1px] w-full max-w-2xl mx-auto bg-white'/>
 

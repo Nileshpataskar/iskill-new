@@ -23,7 +23,7 @@ const ServiceCard = ({ image, title, subtitle, description, link, icon }: Servic
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105"
                 style={{ backgroundImage: `url(${image})` }}
             >
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent transition-all duration-300" />
+                <div className="absolute inset-0 bg-linear-to-r from-black/70 to-transparent transition-all duration-300" />
             </div>
 
             {/* Content */}
@@ -42,7 +42,7 @@ const ServiceCard = ({ image, title, subtitle, description, link, icon }: Servic
                         {description}
                     </p>
                     <a
-                        href={link}
+                        href={link || ''}
                         className="inline-flex items-center text-base md:text-lg font-semibold text-white mt-2 group/link"
                     >
                         Learn More

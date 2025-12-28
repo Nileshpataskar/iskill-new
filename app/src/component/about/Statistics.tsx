@@ -27,7 +27,7 @@ const Statistics = () => {
     ]
 
     return (
-        <section className="bg-blue-50 text-white py-12 h-[90vh] flex items-center">
+        <section className="bg-white text-white  h-full py-20 flex items-center">
             <div className="max-w-6xl mx-auto px-4  flex flex-wrap  gap-6 text-center justify-center">
                 {stats.map((stat, index) => (
                     <div key={index} className="bg-[#151E35] p-6  shadow w-80 h-40 justify-center items-center flex flex-col rounded-xl">
