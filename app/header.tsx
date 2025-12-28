@@ -26,8 +26,6 @@ const Header = () => {
             const y = getScrollY();
             const scrolled = y > 50;
             setIsScrolled(scrolled);
-            // eslint-disable-next-line no-console
-            console.log('[Header] scroll', { y, isScrolled: scrolled });
         };
 
         // Initial run and listeners

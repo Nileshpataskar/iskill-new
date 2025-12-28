@@ -4,7 +4,7 @@ const Hero = () => {
         <>
             <div
                 className='h-screen w-full relative bg-cover bg-center bg-no-repeat'
-                style={{ backgroundImage: 'url(/landing/HeroBg.svg)' }}
+                style={{ backgroundImage: 'url(/landing/HeroBG.svg)' }}
             >
                 <img src="/landing/Wave.png" alt="hero" className='absolute bottom-0 left-0 w-full h-auto object-cover' />
             </div>

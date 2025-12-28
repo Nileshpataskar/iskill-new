@@ -43,9 +43,6 @@ const ContactForm = () => {
     }
 
     try {
-      console.log('Form submitted:', formData);
-      
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       
@@ -58,7 +55,6 @@ const ContactForm = () => {
         message: "",
       });
     } catch (error) {
-      console.error(error);
       setSubmitStatus({ type: 'error', message: 'Error sending message. Please try again later.' });
     } finally {
       setIsSubmitting(false);
