@@ -60,11 +60,11 @@ const Header = () => {
     ];
 
     const storiesItems = [
-        "GMR Group",
-        "Singapore Retail Chain",
-        "FIAT",
-        "Aequs",
-        "Pathkind Labs"
+        {label: "GMR Group",href:"/contactus"},
+        {label: "Singapore Retail Chain",href:"/contactus"},
+        {label: "FIAT",href:"/contactus"},
+        {label: "Aequs",href:"/contactus"},
+        {label: "Pathkind Labs",href:"/contactus"}
     ];
 
     const navItems = [
@@ -82,7 +82,7 @@ const Header = () => {
                 : 'bg-transparent'
                 }`}
         >
-            {/* Gradient overlay for better text readability */}
+            {/* linear overlay for better text readability */}
             <div className={`absolute inset-0 transition-opacity duration-500 ${isScrolled ? 'bg-linear-to-r from-black/40 via-purple-300/30 to-black/40' : 'opacity-0'
                 }`} />
 
@@ -153,19 +153,19 @@ const Header = () => {
                                                         );
                                                     })
                                                 ) : item.dropdownKey === "stories" ? (
-                                                    storiesItems.map((title, idx) => {
-                                                        const storyId = title.toLowerCase().replace(/\s+/g, '-');
+                                                    storiesItems.map((story, idx) => {
+                                                        const storyId = story.label.toLowerCase().replace(/\s+/g, '-');
                                                         const isActive = typeof window !== 'undefined' && window.location.search.includes(`story=${storyId}`);
                                                         return (
                                                             <a
                                                                 key={idx}
-                                                                href={`/success-stories?story=${storyId}`}
+                                                                href={story.href || `/success-stories?story=${storyId}`}
                                                                 className={`block px-7 py-3 text-white/90 transition-all duration-200 font-medium border-l-2 border-transparent rounded-xl
-                                  hover:bg-gradient-to-r hover:from-purple-400/10 hover:to-purple-400/10 hover:text-purple-300 hover:border-l-purple-400 hover:scale-[1.03]
+                                  hover:bg-linear-to-r hover:from-purple-400/10 hover:to-purple-400/10 hover:text-purple-300 hover:border-l-purple-400 hover:scale-[1.03]
                                   ${isActive ? 'bg-purple-400/10 text-purple-300 border-l-purple-400' : ''}`}
                                                                 style={{ transition: 'transform 0.18s cubic-bezier(.4,2,.6,1)' }}
                                                             >
-                                                                {title}
+                                                                {story.label}
                                                             </a>
                                                         );
                                                     })
@@ -180,7 +180,7 @@ const Header = () => {
                                     className="text-sm text-white hover:text-purple-300 transition-all duration-300 font-medium tracking-wide relative group"
                                 >
                                     {item.label}
-                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-purple-400 transition-all duration-300 group-hover:w-full" />
+                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-purple-400 to-purple-400 transition-all duration-300 group-hover:w-full" />
                                 </a>
                             )}
                         </div>
@@ -207,12 +207,12 @@ const Header = () => {
             {/* Mobile Navigation Menu */}
             <div className={`md:hidden transition-all duration-700 ease-out overflow-hidden ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
                 }`}>
-                <div className="bg-gradient-to-b from-black/95 via-purple-900/90 to-black/95 backdrop-blur-3xl border-t border-white/20 shadow-2xl">
+                <div className="bg-linear-to-b from-black/95 via-purple-900/90 to-black/95 backdrop-blur-3xl border-t border-white/20 shadow-2xl">
                     {/* Decorative Elements */}
                     <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 via-purple-400/20 to-blue-400/20" />
-                        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/50 to-transparent" />
-                        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/50 to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-r from-purple-400/20 via-purple-400/20 to-blue-400/20" />
+                        <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-purple-400/50 to-transparent" />
+                        <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-purple-400/50 to-transparent" />
                     </div>
 
                     <nav className="px-6 py-8 space-y-3 max-h-[70vh] overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
@@ -253,18 +253,18 @@ const Header = () => {
                                                         </a>
                                                     ))
                                                 ) : item.dropdownKey === "stories" ? (
-                                                    storiesItems.map((title, idx) => {
-                                                        const storyId = title.toLowerCase().replace(/\s+/g, '-');
+                                                    storiesItems.map((story, idx) => {
+                                                        const storyId = story.label.toLowerCase().replace(/\s+/g, '-');
                                                         return (
                                                             <a
                                                                 key={idx}
-                                                                href={`/success-stories?story=${storyId}`}
+                                                                href={story.href || `/success-stories?story=${storyId}`}
                                                                 className="block py-3 px-4 text-white/90 hover:text-purple-300 transition-all duration-300 rounded-lg hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-purple-400/20"
                                                                 onClick={() => setIsMobileMenuOpen(false)}
                                                             >
                                                                 <div className="flex items-center gap-3">
                                                                     <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
-                                                                    <span className="font-medium">{title}</span>
+                                                                    <span className="font-medium">{story.label}</span>
                                                                 </div>
                                                             </a>
                                                         );
@@ -297,7 +297,7 @@ const Header = () => {
 
                     {/* Bottom Decoration */}
                     <div className="px-6 pb-6">
-                        <div className="h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                        <div className="h-px bg-linear-to-r from-transparent via-white/30 to-transparent" />
                         <div className="flex justify-center mt-6">
                             <div className="flex space-x-3">
                                 <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse" />

@@ -1,21 +1,38 @@
 interface OutcomeCardProps {
-  logo: string;
   text: string;
   author: string;
   designation: string;
+  company?: string;
 }
 
-const OutcomeCard = ({ logo, text, author, designation }: OutcomeCardProps) => {
+// Function to get initials from name
+const getInitials = (name: string): string => {
+  // Remove common prefixes like Mr., Ms., Mrs.
+  const cleanName = name.replace(/^(Mr\.|Ms\.|Mrs\.|Dr\.)\s*/i, '').trim();
+  
+  // Split by space and get first letter of each word
+  const parts = cleanName.split(/\s+/);
+  
+  if (parts.length >= 2) {
+    // Get first letter of first name and last name
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  } else if (parts.length === 1) {
+    // If only one name, get first two letters
+    return parts[0].substring(0, 2).toUpperCase();
+  }
+  
+  return '??';
+};
+
+const OutcomeCard = ({ text, author, designation, company }: OutcomeCardProps) => {
+  const initials = getInitials(author);
+  
   return (
     <div className="outcome-card relative bg-gray-100 rounded-xl p-8 md:p-10 shadow-sm transition-all duration-300 border-2 border-transparent flex flex-col mt-12 mb-4">
-      {/* Floating Logo above card */}
+      {/* Floating Initials above card */}
       <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white rounded-lg px-5 py-3 shadow-md flex items-center justify-center z-20">
-        <div className="bg-red-600 rounded-md px-5 py-2.5 flex items-center justify-center">
-          <img 
-            src={logo} 
-            alt="Company logo" 
-            className="h-5 object-contain max-w-[70px]"
-          />
+        <div className="bg-linear-to-br from-red-600/90 via-yellow-600  to-gray-600/10 rounded-full w-16 h-16 flex items-center justify-center shadow-lg">
+          <span className="text-white font-bold text-xl">{initials}</span>
         </div>
       </div>
       
@@ -31,6 +48,9 @@ const OutcomeCard = ({ logo, text, author, designation }: OutcomeCardProps) => {
       <div className="mt-8">
         <p className="font-semibold text-gray-800 text-base mb-1">— {author}</p>
         <p className="text-sm text-gray-600">{designation}</p>
+        {company && (
+          <p className="text-sm text-gray-500 mt-1">{company}</p>
+        )}
       </div>
     </div>
   );
