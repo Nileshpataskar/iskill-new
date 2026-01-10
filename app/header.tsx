@@ -9,8 +9,6 @@ const Header = () => {
     const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
-        // Debug mount marker
-
         const getScrollY = () => {
             const se = document.scrollingElement as HTMLElement | null;
             const a = typeof window !== 'undefined' ? window.scrollY : 0;
@@ -24,7 +22,7 @@ const Header = () => {
 
         const onScroll = () => {
             const y = getScrollY();
-            const scrolled = y > 50;
+            const scrolled = y >=0;
             setIsScrolled(scrolled);
         };
 
@@ -77,9 +75,7 @@ const Header = () => {
 
     return (
         <header
-            className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out ${isScrolled
-                ? 'rounded-xl m-4 bg-black/30 backdrop-blur-lg border border-white/20 shadow-2xl shadow-black/30'
-                : 'bg-transparent'
+            className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out rounded-xl m-4 bg-black/30 backdrop-blur-lg border border-white/20 shadow-2xl shadow-black/30'
                 }`}
         >
             {/* linear overlay for better text readability */}
