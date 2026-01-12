@@ -10,12 +10,12 @@ const ContactUsPage = () => {
     return (
         <div className='bg-white'>
             <HeroSection />
-            <TalkAndSend />
+            {/* <TalkAndSend /> */}
             <div id="contact-form">
                 <ContactForm />
             </div>
-            <TalkToOurTeam />
-            <MapPage/>
+            {/* <TalkToOurTeam /> */}
+            {/* <MapPage/> */}
         </div>
     )
 }

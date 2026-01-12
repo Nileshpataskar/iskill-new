@@ -12,7 +12,7 @@ const TalkToOurTeam = () => {
 
     return (
         <div
-            className='relative w-full bg-cover bg-center flex flex-col items-center justify-center text-center h-[50vh] sm:h-[60vh] my-6 sm:my-10 px-4'
+            className='relative w-full bg-cover bg-center flex flex-col items-center justify-center text-center h-[50vh] sm:h-[60vh] px-4'
             style={{ backgroundImage: 'url(/contact/talkToOurTeam.png)' }}
         >
             {/* Overlay */}
