@@ -1,6 +1,5 @@
 "use client";
 
-import { url } from "inspector";
 import React, { useState } from "react";
 
 const ContactForm = () => {
@@ -63,28 +62,30 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="flex justify-center h-[120vh] z-10 bg-[#08a4d3]"
+    <section className="flex justify-center items-center min-h-[125vh] py-8 md:py-32 lg:py-40 z-10 bg-[#08a4d3] px-4 sm:px-6 lg:px-8"
       style={{ backgroundImage: 'url(/contact/page2bg.svg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
 
-      <div className=" w-full h-fit m-30 mt-60 flex flex-col items-center ">
-        {/* Form Card */}
-        <div className="flex flex-col gap-2 justify-center items-center mb-6" >
-          <h1 className="font-semibold text-3xl text-white">
+      <div className="w-full max-w-7xl h-fit flex flex-col items-center mt-8 md:mt-12 lg:mt-16">
+        {/* Header Section */}
+        <div className="flex flex-col gap-2 md:gap-3 justify-center items-center mb-6 md:mb-8 lg:mb-10 px-4 text-center">
+          <h1 className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white">
             Contact us
           </h1>
-          <p className="text-xl text-white">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white max-w-3xl">
             Fill in the form below and tell us how we can help.
           </p>
         </div>
-        <div className="w-full max-w-5xl bg-white rounded-2xl shadow-2xl p-6 md:p-10 lg:p-12 z-10 relative">
+        
+        {/* Form Card */}
+        <div className="w-full max-w-5xl bg-white rounded-xl md:rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 z-10 relative">
           <form onSubmit={handleSubmit} className="relative">
             {/* Two Column Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 md:mb-8 relative">
               {/* Left Column */}
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {/* First & Last Name */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                     First & Last Name
                   </label>
                   <input
@@ -94,13 +95,13 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="i.e. John Doe"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400"
                   />
                 </div>
 
-                {/* Phone Number with connector */}
+                {/* Phone Number */}
                 <div className="relative">
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                     Phone Number
                   </label>
                   <input
@@ -110,12 +111,13 @@ const ContactForm = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="i.e. +1-234-567-7890"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400"
                   />
                 </div>
 
+                {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                     Message:
                   </label>
                   <textarea
@@ -124,15 +126,17 @@ const ContactForm = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell us briefly what you're looking for"
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400 resize-none"
+                    rows={6}
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400 resize-none"
                   />
                 </div>
               </div>
 
-              <div className="space-y-6">
+              {/* Right Column */}
+              <div className="space-y-4 sm:space-y-6">
+                {/* Work Email */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                     Work Email
                   </label>
                   <input
@@ -142,12 +146,13 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="i.e. john@mail.com"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400"
                   />
                 </div>
 
+                {/* Company / Organization Name */}
                 <div className="relative">
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="company" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                     Company / Organization Name
                   </label>
                   <input
@@ -157,7 +162,7 @@ const ContactForm = () => {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="i.e. I need a help"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400"
                   />
                 </div>
               </div>
@@ -165,7 +170,7 @@ const ContactForm = () => {
 
             {/* Status Messages */}
             {submitStatus.type && (
-              <div className={`mb-6 p-4 rounded-lg ${submitStatus.type === 'success'
+              <div className={`mb-4 sm:mb-6 p-3 sm:p-4 rounded-lg text-sm sm:text-base ${submitStatus.type === 'success'
                 ? 'bg-green-50 text-green-800 border border-green-200'
                 : 'bg-red-50 text-red-800 border border-red-200'
                 }`}>
@@ -178,7 +183,7 @@ const ContactForm = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-8 py-3 bg-gray-300/40 hover:bg-gray-300/60 text-black font-semibold rounded-lg shadow-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-gray-300/40 hover:bg-gray-300/60 text-black font-semibold rounded-lg shadow-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {isSubmitting ? 'Submitting...' : 'Submit Enquiry'}
               </button>
@@ -187,7 +192,7 @@ const ContactForm = () => {
         </div>
 
         {/* Footer Message */}
-        <p className="text-center text-white/80 text-sm md:text-base mt-8 md:mt-12 max-w-2xl mx-auto z-10">
+        <p className="text-center text-white/80 text-xs sm:text-sm md:text-base mt-6 sm:mt-8 md:mt-10 lg:mt-12 max-w-2xl mx-auto z-10 px-4">
           We respect your time and your inbox. No spam—only meaningful conversations.
         </p>
       </div>
