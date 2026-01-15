@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import { successStories } from './data/successStoriesData';
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -57,19 +58,17 @@ const Header = () => {
         "AI-Powered Solutions"
     ];
 
-    const storiesItems = [
-        {label: "GMR Group",href:"/contactus"},
-        {label: "Singapore Retail Chain",href:"/contactus"},
-        {label: "FIAT",href:"/contactus"},
-        {label: "Aequs",href:"/contactus"},
-        {label: "Pathkind Labs",href:"/contactus"}
-    ];
+    // Map success stories to dropdown items
+    const storiesItems = successStories.map(story => ({
+        label: story.clientName,
+        href: `/success-stories/${story.slug}`
+    }));
 
     const navItems = [
         { href: "/", label: "Home" },
         { href: "/about", label: "About Us" },
         { href: "/solutions", label: "Solutions", hasDropdown: true, dropdownKey: "solutions" },
-        { href: "/success-stories", label: "Success Stories", hasDropdown: true, dropdownKey: "stories" },
+        { href: "#", label: "Success Stories", hasDropdown: true, dropdownKey: "stories" },
         { href: "/contactus", label: "Contact Us" }
     ];
 
@@ -78,7 +77,6 @@ const Header = () => {
             className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out rounded-xl m-4 bg-black/30 backdrop-blur-lg border border-white/20 shadow-2xl shadow-black/30'
                 }`}
         >
-            {/* linear overlay for better text readability */}
             <div className={`absolute inset-0 transition-opacity duration-500 ${isScrolled ? 'bg-linear-to-r from-black/40 via-purple-300/30 to-black/40' : 'opacity-0'
                 }`} />
 
@@ -150,12 +148,11 @@ const Header = () => {
                                                     })
                                                 ) : item.dropdownKey === "stories" ? (
                                                     storiesItems.map((story, idx) => {
-                                                        const storyId = story.label.toLowerCase().replace(/\s+/g, '-');
-                                                        const isActive = typeof window !== 'undefined' && window.location.search.includes(`story=${storyId}`);
+                                                        const isActive = typeof window !== 'undefined' && window.location.pathname === story.href;
                                                         return (
                                                             <a
                                                                 key={idx}
-                                                                href={story.href || `/success-stories?story=${storyId}`}
+                                                                href={story.href}
                                                                 className={`block px-7 py-3 text-white/90 transition-all duration-200 font-medium border-l-2 border-transparent rounded-xl
                                   hover:bg-linear-to-r hover:from-purple-400/10 hover:to-purple-400/10 hover:text-purple-300 hover:border-l-purple-400 hover:scale-[1.03]
                                   ${isActive ? 'bg-purple-400/10 text-purple-300 border-l-purple-400' : ''}`}
@@ -250,12 +247,12 @@ const Header = () => {
                                                     ))
                                                 ) : item.dropdownKey === "stories" ? (
                                                     storiesItems.map((story, idx) => {
-                                                        const storyId = story.label.toLowerCase().replace(/\s+/g, '-');
+                                                        const isActive = typeof window !== 'undefined' && window.location.pathname === story.href;
                                                         return (
                                                             <a
                                                                 key={idx}
-                                                                href={story.href || `/success-stories?story=${storyId}`}
-                                                                className="block py-3 px-4 text-white/90 hover:text-purple-300 transition-all duration-300 rounded-lg hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-purple-400/20"
+                                                                href={story.href}
+                                                                className={`block py-3 px-4 text-white/90 hover:text-purple-300 transition-all duration-300 rounded-lg hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-purple-400/20 ${isActive ? 'bg-purple-400/10 text-purple-300' : ''}`}
                                                                 onClick={() => setIsMobileMenuOpen(false)}
                                                             >
                                                                 <div className="flex items-center gap-3">

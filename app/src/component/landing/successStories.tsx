@@ -1,22 +1,19 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { useEffect, useMemo, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CompanyCard from '../companyCard';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const successData = [
-    { logo: '/landing/success/Group 362.png', description: 'Reimagined workforce training using AI-led solutions for one of India\'s largest infrastructure companies.' },
-    { logo: '/landing/success/image 11.png', description: 'Building people capability through a long-term learning partnership.' },
-    { logo: '/landing/success/image 12.png', description: 'Strengthening full-stack engineering skills for a global workforce.' },
-    { logo: '/landing/success/image 13.png', description: 'Strengthening leadership capability for managerial excellence.' },
-    { logo: '/landing/success/image 16.png', description: 'Enhancing organizational capabilities through comprehensive learning solutions.' },
-    { logo: '/landing/success/image 17.png', description: 'Scaling Data Engineering Hiring Through Interview-as-a-Service.' },
-    { logo: '/landing/success/image 18.png', description: 'Driving Communication Excellence Through Generative AI Functional Training.' },
-    { logo: '/landing/success/image 19.png', description: 'Delivered a custom LMS built for scale, speed, and smart reporting redefining L&D.' },
-    { logo: '/landing/success/image 20.png', description: 'Enabling Leadership Growth at Scale Through Coaching.' },
+    { slug: 'ltimindtree', logo: '/landing/success/image 11.png', description: 'Building people capability through a long-term learning partnership.' },
+    { slug: 'persistent', logo: '/landing/success/image 12.png', description: 'Strengthening full-stack engineering skills for a global workforce.' },
+    { slug: 'hyundai-mobis', logo: '/landing/success/image 13.png', description: 'Strengthening leadership capability for managerial excellence.' },
+    { slug: 'pathkind-labs', logo: '/landing/success/Group 362.png', description: 'Reimagined workforce training using AI-led solutions for Pathkind Labs.' },
 ];
 
 const chunkArray = <T,>(arr: T[], size: number): T[][] => {
@@ -137,11 +134,16 @@ const SuccessStories = () => {
                                 className="absolute inset-0 opacity-0 flex flex-col gap-6"
                             >
                                 {group.map((item, idx) => (
-                                    <CompanyCard
+                                    <Link
                                         key={`${groupIndex}-${idx}`}
-                                        logo={item.logo}
-                                        description={item.description}
-                                    />
+                                        href={`/success-stories/${item.slug}`}
+                                        className="block"
+                                    >
+                                        <CompanyCard
+                                            logo={item.logo}
+                                            description={item.description}
+                                        />
+                                    </Link>
                                 ))}
                             </div>
                         ))}
