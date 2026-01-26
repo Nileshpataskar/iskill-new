@@ -19,9 +19,9 @@ const renderMixedContent = (items: string[]) => {
   const flushBulletList = () => {
     if (bulletItems.length > 0) {
       elements.push(
-        <ul key={`bullets-${keyIndex++}`} className="mt-3 mb-3 space-y-2 text-sm sm:text-base text-gray-700 leading-relaxed list-disc pl-5">
+        <ul key={`bullets-${keyIndex++}`} className="mt-5 mb-6 space-y-3.5 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed list-disc pl-7 marker:text-blue-600 marker:text-lg">
           {bulletItems.map((item, idx) => (
-            <li key={idx}>{item.trim()}</li>
+            <li key={idx} className="pl-3 leading-relaxed">{item.trim()}</li>
           ))}
         </ul>
       );
@@ -59,7 +59,7 @@ const renderMixedContent = (items: string[]) => {
     if (isHeading) {
       flushBulletList();
       elements.push(
-        <h3 key={keyIndex++} className="mt-4 mb-2 text-base sm:text-lg font-semibold text-gray-900">
+        <h3 key={keyIndex++} className="mt-7 mb-4 text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
           {trimmed}
         </h3>
       );
@@ -71,7 +71,7 @@ const renderMixedContent = (items: string[]) => {
       // Regular paragraph
       flushBulletList();
       elements.push(
-        <p key={keyIndex++} className="mb-3 text-sm sm:text-base text-gray-700 leading-relaxed">
+        <p key={keyIndex++} className="mb-5 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
           {trimmed}
         </p>
       );
@@ -93,48 +93,63 @@ export default function SuccessStoryBody({
 }: Props) {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-24">
         {/* The Challenge */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-24 items-center">
-          <div>
-            <h2 className="text-xl sm:text-4xl font-semibold text-gray-900 flex items-center gap-2">
-              <span>The Challenge</span>
-            </h2>
-            <div className="mt-4 space-y-3 text-sm sm:text-xl text-gray-700">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-start mb-16 md:mb-24">
+          <div className="order-2 md:order-1">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-1 w-12 bg-blue-600 rounded-full"></div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">
+                The Challenge
+              </h2>
+            </div>
+            <div className="mt-8 space-y-6 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
               {challenge.map((para, idx) => {
                 const trimmed = para.trim();
                 if (!trimmed) return null;
-                return <p key={idx}>{trimmed}</p>;
+                return (
+                  <p key={idx} className="leading-relaxed text-gray-700">
+                    {trimmed}
+                  </p>
+                );
               })}
             </div>
           </div>
 
-          <div className="flex items-center justify-center">
+          <div className="order-1 md:order-2 flex items-center justify-center md:sticky md:top-24">
             {challengeImageContent ? (
               <InlineSVG
                 svgContent={challengeImageContent}
-                className="w-full max-w-md md:max-w-xl h-auto"
+                className="w-full max-w-md md:max-w-xl lg:max-w-2xl h-auto drop-shadow-xl"
               />
             ) : null}
           </div>
         </div>
 
+        {/* Divider */}
+        <div className="my-20 md:my-28 flex justify-center">
+          <div className="h-px w-32 bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+        </div>
+
         {/* The iSkillBox Solution */}
-        <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-24 items-center">
-          <div className="order-2 md:order-1 flex items-center justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-start">
+          <div className="order-2 md:order-2 flex items-center justify-center md:sticky md:top-24">
             {solutionImageContent ? (
               <InlineSVG
                 svgContent={solutionImageContent}
-                className="w-full max-w-md md:max-w-xl h-auto"
+                className="w-full max-w-md md:max-w-xl lg:max-w-2xl h-auto drop-shadow-xl"
               />
             ) : null}
           </div>
 
           <div className="order-1 md:order-2">
-            <h2 className="text-xl sm:text-4xl font-semibold text-gray-900 flex items-center gap-2">
-              <span>The iSkillBox Solution</span>
-            </h2>
-            <div className="mt-4 text-sm sm:text-base text-gray-700">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-1 w-12 bg-blue-600 rounded-full"></div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">
+                The iSkillBox Solution
+              </h2>
+            </div>
+            <div className="mt-8 text-base sm:text-lg md:text-xl text-gray-700">
               {renderMixedContent(solution)}
             </div>
           </div>

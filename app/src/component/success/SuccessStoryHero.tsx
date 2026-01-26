@@ -44,7 +44,7 @@ export default function SuccessStoryHero({
               <div className="mb-10 flex justify-start items-center">
                 <InlineSVG
                   svgContent={logoContent}
-                  className="h-fit w-80 object-contain"
+                  className="h-fit w-60 object-contain"
                 />
               </div>
             ) : logoPath ? (
@@ -52,9 +52,9 @@ export default function SuccessStoryHero({
                 <Image
                   src={logoPath}
                   alt={`${title} logo`}
-                  width={80}
-                  height={80}
-                  className="h-fit w-80 object-contain"
+                  width={60}
+                  height={60}
+                  className="h-fit w-60 object-contain"
                 />
               </div>
             ) : null}
