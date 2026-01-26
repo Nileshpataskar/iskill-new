@@ -3,6 +3,8 @@ export type SuccessStory = {
   clientName: string;
   tagline: string;
   heroImage: string;
+  challengeImage?: string;
+  solutionImage?: string;
   logo: string;
   stats: Array<{ label: string; value: string }>;
   challenge: string[];
@@ -15,8 +17,9 @@ export const successStories: SuccessStory[] = [
     clientName: "LTIMindtree",
     tagline: "Building people capability through a long-term learning partnership.",
     heroImage: "/success/lti2.svg",
+    challengeImage: "/success/lti1.svg",
+    solutionImage: "/success/lti3.svg",
     logo: "/success/lti.svg",
-    
     stats: [
       { label: "Client", value: "LTIMindtree" },
       { label: "Category", value: "Soft Skills | Instructor-Led Training" },
@@ -39,8 +42,10 @@ export const successStories: SuccessStory[] = [
     slug: "persistent",
     clientName: "Persistent",
     tagline: "Strengthening full-stack engineering skills for a global workforce.",
-    heroImage: "/contact/hero_new.png",
-    logo: "/landing/success/image 12.png",
+    heroImage: "/success/persistent/per2.svg",
+    challengeImage: "/success/persistent/per3.svg",
+    solutionImage: "/success/persistent/per4.svg",
+    logo: "/success/persistent/per1.svg",
     stats: [
       { label: "Client", value: "Persistent" },
       { label: "Category", value: "Technical Training | Engineering" },
@@ -62,8 +67,10 @@ export const successStories: SuccessStory[] = [
     slug: "hyundai-mobis",
     clientName: "Hyundai Mobis",
     tagline: "Strengthening leadership capability for managerial excellence.",
-    heroImage: "/contact/hero_new.png",
-    logo: "/landing/success/image 13.png",
+    heroImage: "/success/hyundai/hyu2.svg",
+    challengeImage: "/success/hyundai/hyu3.svg",
+    solutionImage: "/success/hyundai/hyu4.svg",
+    logo: "/success/hyundai/hyu1.svg",
     stats: [
       { label: "Client", value: "Hyundai Mobis" },
       { label: "Category", value: "Leadership Development" },
@@ -85,8 +92,10 @@ export const successStories: SuccessStory[] = [
     slug: "pathkind-labs",
     clientName: "Pathkind Labs",
     tagline: "Enhancing Pathkind Labs through soft skills excellence.",
-    heroImage: "/contact/hero_new.png",
-    logo: "/landing/success/Group 362.png",
+    logo: "/success/pathkind/pat1.svg",
+    heroImage: "/success/pathkind/pat2.svg",
+    challengeImage: "/success/pathkind/pat3.svg",
+    solutionImage: "/success/pathkind/pat4.svg",
     stats: [
       { label: "Client", value: "Pathkind Labs" },
       { label: "Category", value: "Soft Skills Training" },
@@ -108,9 +117,10 @@ export const successStories: SuccessStory[] = [
     slug: "gmr-group",
     clientName: "GMR Group",
     tagline: "Driving communication excellence through Generative AI training.",
-    heroImage: "/contact/hero_new.png",
-    // NOTE: user referenced image 14.png but it does not exist in /public; using an existing asset instead.
-    logo: "/landing/success/image 19.png",
+    logo: "/success/gmr/gmr1.svg",
+    heroImage: "/success/gmr/gmr2.svg",
+    challengeImage: "/success/gmr/gmr3.svg",
+    solutionImage: "/success/gmr/gmr4.svg",
     stats: [
       { label: "Client", value: "GMR Group" },
       { label: "Category", value: "Generative AI | Functional Training" },
@@ -132,9 +142,10 @@ export const successStories: SuccessStory[] = [
     slug: "jet2-travel",
     clientName: "JET2 Travel Technologies",
     tagline: "Scaling data engineering hiring through Interview-as-a-Service.",
-    heroImage: "/contact/hero_new.png",
-    // NOTE: user referenced image 15.png but it does not exist in /public; using an existing asset instead.
-    logo: "/landing/success/image 16.png",
+    heroImage: "/success/jet/jet2.svg",
+    challengeImage: "/success/jet/jet3.svg",
+    solutionImage: "/success/jet/jet4.svg",
+    logo: "/success/jet/jet1.svg",
     stats: [
       { label: "Client", value: "JET2 Travel Technologies" },
       { label: "Category", value: "Interview-as-a-Service" },
@@ -156,8 +167,10 @@ export const successStories: SuccessStory[] = [
     slug: "krafton",
     clientName: "KRAFTON",
     tagline: "Enabling leadership growth at scale through coaching.",
-    heroImage: "/contact/hero_new.png",
-    logo: "/landing/success/image 20.png",
+    heroImage: "/success/krafton/kra2.svg",
+    challengeImage: "/success/krafton/kra3.svg",
+    solutionImage: "/success/krafton/kra4.svg",
+    logo: "/success/krafton/kra1.svg",
     stats: [
       { label: "Client", value: "KRAFTON" },
       { label: "Category", value: "Leadership Coaching" },
@@ -179,8 +192,10 @@ export const successStories: SuccessStory[] = [
     slug: "aequs",
     clientName: "Aequs",
     tagline: "Modernizing corporate learning with a tailored LMS solution.",
-    heroImage: "/contact/hero_new.png",
-    logo: "/landing/success/image 17.png",
+    heroImage: "/success/aequs/aeq2.svg",
+    challengeImage: "/success/aequs/aeq3.svg",
+    solutionImage: "/success/aequs/aeq4.svg",
+    logo: "/success/aequs/aeq1.svg",
     stats: [
       { label: "Client", value: "Aequs" },
       { label: "Category", value: "LMS & eLearning Solutions" },
@@ -202,8 +217,10 @@ export const successStories: SuccessStory[] = [
     slug: "vip-bags",
     clientName: "VIP Bags",
     tagline: "Enhancing retail customer experience through interactive learning.",
-    heroImage: "/contact/hero_new.png",
-    logo: "/landing/success/image 18.png",
+    heroImage: "/success/vip/vip2.svg",
+    challengeImage: "/success/vip/vip3.svg",
+    solutionImage: "/success/vip/vip4.svg",
+    logo: "/success/vip/vip1.svg",
     stats: [
       { label: "Client", value: "VIP Bags" },
       { label: "Category", value: "Retail eLearning" },
@@ -211,14 +228,19 @@ export const successStories: SuccessStory[] = [
       { label: "Focus", value: "Customer Experience" },
     ],
     challenge: [
-      "Ensure consistent customer communication across retail touchpoints.",
-      "Improve product and warranty knowledge among store staff.",
-      "Build confidence in handling real customer scenarios.",
+      "VIP Bags needed an engaging and scalable training solution to upskill store attendants across retail locations.",
+      "The objective was to strengthen customer interactions, query handling, and after-sales service consistency, while ensuring store staff possessed strong product knowledge and clear understanding of warranty processes.",
+      "Maintaining a brand-aligned customer experience at every touchpoint was critical to upholding trust and service quality.",
     ],
     solution: [
-      "Interactive eLearning modules with scenario-based conversations.",
-      "Clear guidance on e-warranty processes and policies.",
-      "Behavioral simulations reinforcing correct customer interactions.",
+      "iSkillBox designed and delivered an interactive eLearning program tailored specifically for VIP store attendants.",
+      "The module covered:",
+      "Step-by-step guidance on E-Warranty application processes",
+      "Warranty validity conditions and exceptions",
+      "Clear explanation of warranty terms and policies for accurate customer communication",
+      "Scenario-based conversations demonstrating effective and ineffective communication practices",
+      "The program combined clarity, interactivity, and real-world retail scenarios to ensure easy understanding and practical application.",
+      "This approach empowered store staff with the right knowledge, confidence, and communication behaviors—enabling a seamless, trustworthy, and brand-consistent customer experience across retail locations.",
     ],
   },
 ];
@@ -226,4 +248,3 @@ export const successStories: SuccessStory[] = [
 export function getSuccessStory(slug: string) {
   return successStories.find((s) => s.slug === slug);
 }
-

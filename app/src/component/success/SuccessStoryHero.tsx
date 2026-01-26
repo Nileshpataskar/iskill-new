@@ -1,18 +1,23 @@
+import InlineSVG from "./InlineSVG";
 import Image from "next/image";
 
 type Props = {
   title: string;
   subtitle: string;
-  logoSrc?: string;
-  imageSrc?: string;
+  logoContent?: string | null;
+  logoPath?: string;
+  imageContent?: string | null;
+  imagePath?: string;
   stats?: Array<{ label: string; value: string }>;
 };
 
 export default function SuccessStoryHero({
   title,
   subtitle,
-  logoSrc,
-  imageSrc,
+  logoContent,
+  logoPath,
+  imageContent,
+  imagePath,
   stats,
 }: Props) {
   return (
@@ -35,16 +40,22 @@ export default function SuccessStoryHero({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-24 items-center">
           {/* Left: Logo + title + meta */}
           <div className="text-left">
-            {logoSrc ? (
+            {logoContent ? (
               <div className="mb-10 flex justify-start items-center">
-
-                  <Image
-                    src={logoSrc}
-                    alt={`${title} logo`}
-                    width={96}
-                    height={96}
-                    className="h-fit w-96 object-contain"
-                  />
+                <InlineSVG
+                  svgContent={logoContent}
+                  className="h-fit w-80 object-contain"
+                />
+              </div>
+            ) : logoPath ? (
+              <div className="mb-10 flex justify-start items-center">
+                <Image
+                  src={logoPath}
+                  alt={`${title} logo`}
+                  width={80}
+                  height={80}
+                  className="h-fit w-80 object-contain"
+                />
               </div>
             ) : null}
 
@@ -67,13 +78,18 @@ export default function SuccessStoryHero({
 
           {/* Right: Illustration */}
           <div className="flex items-center justify-center">
-            {imageSrc ? (
+            {imageContent ? (
+              <InlineSVG
+                svgContent={imageContent}
+                className="w-fit max-w-md md:max-w-xl h-auto"
+              />
+            ) : imagePath ? (
               <Image
-                src={imageSrc}
+                src={imagePath}
                 alt=""
                 width={420}
                 height={360}
-                className="w-full max-w-md md:max-w-xl h-auto"
+                className="w-fit max-w-md md:max-w-xl h-auto"
                 priority
               />
             ) : null}

@@ -6,15 +6,22 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CompanyCard from '../companyCard';
 import Link from 'next/link';
+import { successStories } from '@/app/data/successStoriesData';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const successData = [
-    { slug: 'ltimindtree', logo: '/landing/success/image 11.png', description: 'Building people capability through a long-term learning partnership.' },
-    { slug: 'persistent', logo: '/landing/success/image 12.png', description: 'Strengthening full-stack engineering skills for a global workforce.' },
-    { slug: 'hyundai-mobis', logo: '/landing/success/image 13.png', description: 'Strengthening leadership capability for managerial excellence.' },
-    { slug: 'pathkind-labs', logo: '/landing/success/Group 362.png', description: 'Reimagined workforce training using AI-led solutions for Pathkind Labs.' },
-];
+type SuccessDataItem = {
+    slug: string;
+    logo: string;
+    description: string;
+};
+
+// Map success stories to the format needed for the component
+const successData: SuccessDataItem[] = successStories.map((story) => ({
+    slug: story.slug,
+    logo: story.logo,
+    description: story.tagline,
+}));
 
 const chunkArray = <T,>(arr: T[], size: number): T[][] => {
     const result: T[][] = [];
@@ -113,7 +120,7 @@ const SuccessStories = () => {
                         {/* Stats */}
                         <div className="flex flex-wrap gap-8 pt-2 justify-center md:justify-start">
                             <div className="flex flex-col">
-                                <span className="text-3xl md:text-4xl font-bold text-white">15+</span>
+                                <span className="text-3xl md:text-4xl font-bold text-white">{successData.length}+</span>
                                 <span className="text-sm text-white/70 mt-1">Success Stories</span>
                             </div>
                             <div className="flex flex-col">
@@ -151,7 +158,6 @@ const SuccessStories = () => {
                 </div>
             </div>
 
-            {/* Post-animation scroll space */}
             <div className="h-[120vh]" />
         </section>
     );

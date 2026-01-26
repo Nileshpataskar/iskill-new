@@ -136,7 +136,7 @@ const Header = () => {
                                                         return (
                                                             <a
                                                                 key={idx}
-                                                                href={`/solutions#${title.toLowerCase().replace(/\s+/g, '-')}`}
+                                                                href={`/contactus`}
                                                                 className={`block px-7 py-3 text-white/90 transition-all duration-200 font-medium border-l-2 border-transparent rounded-xl
                                   hover:bg-linear-to-r hover:from-purple-400/10 hover:to-purple-400/10 hover:text-purple-300 hover:border-l-purple-400 hover:scale-[1.03]
                                   ${isActive ? 'bg-purple-400/10 text-purple-300 border-l-purple-400' : ''}`}
@@ -235,7 +235,7 @@ const Header = () => {
                                                     solutionsItems.map((title, idx) => (
                                                         <a
                                                             key={idx}
-                                                            href={`/solutions#${title.toLowerCase().replace(/\s+/g, '-')}`}
+                                                            href={`/contactus`}
                                                             className="block py-3 px-4 text-white/80 hover:text-purple-300 transition-all duration-300 rounded-lg hover:bg-white/10 hover:scale-105"
                                                             onClick={() => setIsMobileMenuOpen(false)}
                                                         >
