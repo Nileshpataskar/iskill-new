@@ -6,14 +6,11 @@ import History from '@/app/src/component/about/History'
 import Potential from '@/app/src/component/about/Potential'
 import ProductsServices from '@/app/src/component/about/ProductServices'
 import NotLast from '../src/component/landing/notLast'
-import { getSVGContent } from '../utils/svgUtils'
 
 const AboutPage = () => {
-    const heroSvgContent = getSVGContent('/about/hero.svg') || undefined;
-
     return (
         <div className=" ">
-            <HeroSection svgContent={heroSvgContent} />
+            <HeroSection />
             <Statistics />
             <GlobalLearning />
             <Clientele background={false} />
