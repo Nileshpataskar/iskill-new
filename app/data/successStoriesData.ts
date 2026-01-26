@@ -215,7 +215,7 @@ export const successStories: SuccessStory[] = [
   },
   {
     slug: "vip-bags",
-    clientName: "VIP Bags",
+    clientName: "VIP Bags ",
     tagline: "Enhancing retail customer experience through interactive learning.",
     heroImage: "/success/vip/vip2.svg",
     challengeImage: "/success/vip/vip3.svg",
