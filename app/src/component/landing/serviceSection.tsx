@@ -48,25 +48,25 @@ const ServiceSection = () => {
 
   return (
     <section className="w-full py-8 px-4 md:px-14 lg:px-40 bg-white" id="know-more">
-    {/* key: items-start makes default alignment left */}
-    <div className="w-full flex flex-col gap-12 items-start">
-  
-      {services.map((service, index) => (
-        <div
-          key={service.title}
-          className={`
+      {/* key: items-start makes default alignment left */}
+      <div className="w-full flex flex-col gap-12 items-start">
+
+        {services.map((service, index) => (
+          <div
+            key={service.title}
+            className={`
             w-full
             lg:w-[80%]
             ${index % 2 === 1 ? "lg:self-end" : "lg:self-start"}
           `}
-        >
-          <ServiceCard {...service} />
-        </div>
-      ))}
-  
-    </div>
-  </section>
-  
+          >
+            <ServiceCard {...service} />
+          </div>
+        ))}
+
+      </div>
+    </section>
+
   )
 }
 

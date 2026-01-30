@@ -3,6 +3,7 @@ import SuccessStoryHero from "../../src/component/success/SuccessStoryHero";
 import SuccessStoryBody from "../../src/component/success/SuccessStoryBody";
 import { getSuccessStory, successStories } from "../../data/successStoriesData";
 import { getSVGContent } from "../../utils/svgUtils";
+import NotLast from "@/app/src/component/landing/notLast";
 
 export function generateStaticParams() {
   return successStories.map((s) => ({ slug: s.slug }));
@@ -46,6 +47,7 @@ export default async function SuccessStoryPage({
         challengeImageContent={challengeImageContent || undefined}
         solutionImageContent={solutionImageContent || undefined}
       />
+      <NotLast />
     </div>
   );
 }

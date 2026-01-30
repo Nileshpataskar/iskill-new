@@ -32,7 +32,7 @@ const renderMixedContent = (items: string[]) => {
 
   items.forEach((item, index) => {
     const trimmed = item.trim();
-    
+
     // Skip empty strings but flush bullet list if we were in one
     if (!trimmed) {
       if (inBulletList) {
@@ -43,11 +43,11 @@ const renderMixedContent = (items: string[]) => {
 
     // Check if this looks like a heading (ends with colon and is relatively short)
     const isHeading = trimmed.endsWith(':') && trimmed.length < 100;
-    
+
     // Check if this looks like a bullet point (short, doesn't end with period, or starts with capital letter and is concise)
-    const isBulletPoint = 
-      trimmed.length < 150 && 
-      !trimmed.endsWith('.') && 
+    const isBulletPoint =
+      trimmed.length < 150 &&
+      !trimmed.endsWith('.') &&
       !trimmed.endsWith(':') &&
       (trimmed.length < 80 || /^[A-Z][^.]{0,100}$/.test(trimmed));
 
@@ -93,9 +93,9 @@ export default function SuccessStoryBody({
 }: Props) {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-4">
         {/* The Challenge */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-start mb-16 md:mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-8 lg:gap-20 xl:gap-28 items-start mb-2 sm:mb-2 md:mb-2">
           <div className="order-2 md:order-1">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-1 w-12 bg-blue-600 rounded-full"></div>
@@ -127,12 +127,12 @@ export default function SuccessStoryBody({
         </div>
 
         {/* Divider */}
-        <div className="my-20 md:my-28 flex justify-center">
+        <div className="my-8  md:my-20 lg:my-12 flex justify-center">
           <div className="h-px w-32 bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
         </div>
 
         {/* The iSkillBox Solution */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-20 xl:gap-28 items-start">
           <div className="order-2 md:order-2 flex items-center justify-center md:sticky md:top-24">
             {solutionImageContent ? (
               <InlineSVG

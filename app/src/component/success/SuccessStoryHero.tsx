@@ -21,14 +21,14 @@ export default function SuccessStoryHero({
   stats,
 }: Props) {
   return (
-    <section className="relative bg-[#08a4d3] overflow-hidden h-screen">
+    <section className="relative bg-[#08a4d3] overflow-hidden min-h-[auto] md:min-h-screen">
       <svg
         className="absolute inset-x-0 top-0 h-full w-full"
         viewBox="0 0 1440 560"
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        
+
         <path
           d="M0,430 C240,500 360,485 480,475 C600,460 720,455 840,448 C960,441 1080,435 1200,430 C1320,425 1380,422 1440,420 L1440,560 L0,560 Z"
           fill="#ffffff"
@@ -36,7 +36,7 @@ export default function SuccessStoryHero({
         />
       </svg>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 lg:pt-28 pb-16 md:pb-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 md:pt-24 lg:pt-28 pb-10 sm:pb-14 md:pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-24 items-center">
           {/* Left: Logo + title + meta */}
           <div className="text-left">
@@ -59,7 +59,7 @@ export default function SuccessStoryHero({
               </div>
             ) : null}
 
-           
+
             <p className="mt-3 text-base sm:text-2xl font-semibold text-white/90 max-w-lg">
               {subtitle}
             </p>

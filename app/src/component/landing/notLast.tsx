@@ -2,7 +2,7 @@ import React from 'react'
 
 const NotLast = () => {
     return (
-        <section className="bg-[#161c2d] flex flex-col items-center text-white/90 min-h-[40vh] sm:min-h-[45vh] md:min-h-[50vh] pt-12 sm:pt-16 md:pt-20 font-sans ">
+        <section className="bg-[#161c2d] flex flex-col items-center text-white/90 min-h-[auto] sm:min-h-[35vh] md:min-h-[50vh] pt-8 sm:pt-12 md:pt-20 pb-4 sm:pb-0 font-sans ">
             <div className='flex flex-col items-center w-full gap-4 sm:gap-6 px-4 sm:px-6 md:px-8 lg:px-12'>
                 <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold leading-tight'>
                     The End of the Page,<br />
@@ -16,7 +16,7 @@ const NotLast = () => {
                     Let's Make it Happen
                 </a>
             </div>
-            <span className='my-14 h-[1px] w-full max-w-2xl mx-auto bg-white'/>
+            <span className='my-14 h-[1px] w-full max-w-2xl mx-auto bg-white' />
 
         </section>
     );
