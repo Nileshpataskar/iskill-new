@@ -10,40 +10,40 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-6 ">
 
         {/* Links */}
-        <div className="pt-10 flex justify-between px-20">
-         
-          <div>
-            <div >
-              <img src='/iskillLogo/16.png' alt='logo' className='w-52' />
+        <div className="pt-10 flex flex-col md:flex-row justify-between gap-8 md:gap-12 lg:gap-16 px-4 sm:px-8 md:px-12 lg:px-20">
+
+          <div className="text-center md:text-left">
+            <div className="flex justify-center md:justify-start">
+              <img src='/iskillLogo/16.png' alt='logo' className='w-40 sm:w-44 md:w-52' />
             </div>
-            <p className="mt-4 max-w-sm text-sm text-white/70">
+            <p className="mt-4 max-w-sm text-sm text-white/70 mx-auto md:mx-0">
               Building future‑ready workforces with insights, intelligence and innovation.
             </p>
           </div>
 
-          <span className='flex  gap-28'>
+          <div className='flex flex-row justify-center md:justify-end gap-12 sm:gap-16 md:gap-20 lg:gap-28'>
 
-            <div>
+            <div className="text-center sm:text-left">
               <p className="text-sm font-bold text-white">Company</p>
               <ul className="mt-4 space-y-3 text-sm">
-                <li><Link className="hover:text-white" href="/about">About Us</Link></li>
-                <li><Link className="hover:text-white" href="#solutions">Solutions</Link></li>
-                <li><Link className="hover:text-white" href="#success">Success Stories</Link></li>
-                <li><Link className="hover:text-white" href="#contact">Contact</Link></li>
+                <li><Link className="hover:text-white transition-colors" href="/about">About Us</Link></li>
+                <li><Link className="hover:text-white transition-colors" href="#solutions">Solutions</Link></li>
+                <li><Link className="hover:text-white transition-colors" href="#success">Success Stories</Link></li>
+                <li><Link className="hover:text-white transition-colors" href="#contact">Contact</Link></li>
               </ul>
             </div>
 
-            <div>
+            <div className="text-center sm:text-left">
               <p className="text-sm font-bold text-white">Resources</p>
               <ul className="mt-4 space-y-3 text-sm">
-                <li><a className="hover:text-white" href="#">Blog</a></li>
-                <li><a className="hover:text-white" href="#">Case Studies</a></li>
-                <li><a className="hover:text-white" href="#">Guides</a></li>
-                <li><a className="hover:text-white" href="#">Help Center</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Blog</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Case Studies</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Guides</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Help Center</a></li>
               </ul>
             </div>
 
-          </span>
+          </div>
 
         </div>
 

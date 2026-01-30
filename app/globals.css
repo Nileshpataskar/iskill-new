@@ -80,3 +80,43 @@ body {
   opacity: 0.75;
   filter: blur(0);
 }
+
+/* Mobile responsive styles for outcome carousel */
+@media (max-width: 640px) {
+  .outcome-swiper .swiper-slide-active .outcome-card {
+    transform: scale(1);
+  }
+  
+  .outcome-swiper .swiper-slide:not(.swiper-slide-active) .outcome-card {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  
+  .outcome-swiper .swiper-slide {
+    padding-bottom: 2rem;
+  }
+  
+  /* Make navigation buttons smaller on mobile */
+  .outcome-swiper .swiper-button-next,
+  .outcome-swiper .swiper-button-prev {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .outcome-swiper .swiper-button-next::after,
+  .outcome-swiper .swiper-button-prev::after {
+    font-size: 16px;
+  }
+}
+
+/* Tablet responsive styles */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .outcome-swiper .swiper-slide-active .outcome-card {
+    transform: scale(1.05);
+  }
+  
+  .outcome-swiper .swiper-slide:not(.swiper-slide-active) .outcome-card {
+    transform: scale(0.88);
+    opacity: 0.55;
+  }
+}

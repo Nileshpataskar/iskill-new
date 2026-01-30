@@ -80,10 +80,19 @@ const NewServiceSection = () => {
         visibleIndices.push(i);
     }
 
+    // Responsive card spacing based on window width
+    const getResponsiveSpacing = () => {
+        if (typeof window === 'undefined') return 320;
+        if (window.innerWidth < 640) return 180;
+        if (window.innerWidth < 768) return 220;
+        if (window.innerWidth < 1024) return 280;
+        return 320;
+    };
+
     const getCardTransform = (continuousIndex: number) => {
         const offset = continuousIndex - centerIndex;
 
-        const cardSpacing = 320;
+        const cardSpacing = getResponsiveSpacing();
 
         const x = offset * cardSpacing;
 
@@ -131,10 +140,12 @@ const NewServiceSection = () => {
             </div>
             {/* Services Title */}
             <div
-                className="relative w-full h-[380px] md:h-[420px] flex items-start justify-center overflow-hidden"
+                className="relative w-full h-[320px] sm:h-[360px] md:h-[420px] flex items-start justify-center overflow-hidden"
                 style={{ perspective: "1000px" }}
                 onMouseEnter={() => setIsAutoPlaying(false)}
                 onMouseLeave={() => setIsAutoPlaying(true)}
+                onTouchStart={() => setIsAutoPlaying(false)}
+                onTouchEnd={() => setTimeout(() => setIsAutoPlaying(true), 3000)}
             >
 
                 <div
@@ -165,16 +176,16 @@ const NewServiceSection = () => {
                                     zIndex,
                                     transformStyle: "preserve-3d",
                                 }}
-                                className={`absolute w-[260px] sm:w-[280px] md:w-[300px] cursor-pointer
+                                className={`absolute w-[200px] xs:w-[220px] sm:w-[260px] md:w-[300px] cursor-pointer
                                     bg-white rounded-2xl shadow-xl overflow-hidden
                                     transition-shadow duration-300
                                     ${isActive ? "shadow-2xl ring-2 ring-cyan-400/50" : "hover:shadow-2xl"}
                                 `}
                             >
                                 {/* Card Content */}
-                                <div className="p-4 md:p-5">
+                                <div className="p-3 sm:p-4 md:p-5">
                                     {/* Image Container */}
-                                    <div className="relative w-full h-[140px] md:h-[160px] mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                                    <div className="relative w-full h-[100px] sm:h-[130px] md:h-[160px] mb-3 sm:mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
                                         <Image
                                             src={service.image}
                                             alt={service.title}
@@ -185,7 +196,7 @@ const NewServiceSection = () => {
                                     </div>
 
                                     {/* Title */}
-                                    <h3 className="font-bold text-lg md:text-xl text-gray-900 mb-1">
+                                    <h3 className="font-bold text-sm sm:text-base md:text-lg lg:text-xl text-gray-900 mb-1">
                                         {service.title}
                                     </h3>
 

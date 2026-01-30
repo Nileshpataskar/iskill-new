@@ -11,7 +11,7 @@ import { testimonials } from "@/app/data/testimonialData";
 
 const Outcome = () => {
   const swiperRef = useRef<SwiperType | null>(null);
-  
+
   // Duplicate testimonials to ensure smooth looping in both directions
   const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
@@ -45,23 +45,27 @@ const Outcome = () => {
           watchSlidesProgress={true}
           spaceBetween={40}
           centeredSlides={true}
-          slidesPerView={3}
+          slidesPerView={1}
           initialSlide={testimonials.length}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
           breakpoints={{
-            640: { 
-              slidesPerView: 1, 
+            // Default is 1 slide for mobile (< 640px)
+            640: {
+              slidesPerView: 1.5,
               centeredSlides: true,
-              loopAdditionalSlides: testimonials.length,
-              initialSlide: testimonials.length
+              spaceBetween: 20,
             },
-            768: { 
-              slidesPerView: 3, 
+            768: {
+              slidesPerView: 2,
               centeredSlides: true,
-              loopAdditionalSlides: testimonials.length,
-              initialSlide: testimonials.length
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 3,
+              centeredSlides: true,
+              spaceBetween: 40,
             },
           }}
         >
