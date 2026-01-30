@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 
 const services = [
@@ -10,7 +10,7 @@ const services = [
         title: "Skill Gap Analysis",
         subtitle: "Spot the gaps. Spark the growth.",
         description:
-            "We turn performance blind spots into growth opportunities with data-driven diagnostics that map where your teams need to go and how to get them there.",
+            "We turn performance blind spots into growth opportunities with data-driven insights.",
         link: "/about",
     },
     {
@@ -18,7 +18,7 @@ const services = [
         title: "Instructor-Led Training",
         subtitle: "Learning with a human edge.",
         description:
-            "Our expert-led virtual and in-person training blends industry know-how with real-time interaction designed to drive skill, confidence, and change.",
+            "Live, expert-driven sessions designed around real .",
         link: "/about",
     },
     {
@@ -26,7 +26,7 @@ const services = [
         title: "1:1 & Group Coaching",
         subtitle: "Coaching that creates momentum.",
         description:
-            "From personalized executive coaching to high-impact team sessions we help people lead better, grow faster, and think deeper.",
+            "high-impact live learning interventions annually.",
         link: "/about",
     },
     {
@@ -34,7 +34,7 @@ const services = [
         title: "eLearning & LMS",
         subtitle: "Content that performs. Platforms that scale.",
         description:
-            "We design mobile-first, gamified eLearning paired with a smart LMS so you can track, train, and transform teams at scale.",
+            "Digital learning experiences and platforms built for scale.",
         link: "/about",
     },
     {
@@ -42,24 +42,26 @@ const services = [
         title: "Psychometric Assessments",
         subtitle: "Understand what's beneath the surface.",
         description:
-            "We go beyond resumes to decode personality, behavior, and potential so you hire right, lead smart, and build strong teams.",
+            "Structured assessments to understand behavior. ",
         link: "/about",
     },
 ];
 
+const VISIBLE_CARDS = 7;
+
 const NewServiceSection = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [centerIndex, setCenterIndex] = useState(0);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    const totalCards = services.length;
 
     const prev = useCallback(() => {
-        setActiveIndex((p) => (p - 1 + services.length) % services.length);
+        setCenterIndex((p) => p - 1);
     }, []);
 
     const next = useCallback(() => {
-        setActiveIndex((p) => (p + 1) % services.length);
+        setCenterIndex((p) => p + 1);
     }, []);
 
-    // Auto-play functionality
     useEffect(() => {
         if (!isAutoPlaying) return;
         const interval = setInterval(() => {
@@ -68,76 +70,85 @@ const NewServiceSection = () => {
         return () => clearInterval(interval);
     }, [isAutoPlaying, next]);
 
-    // Calculate position for each card - CURVED ARC with TILT style
-    const getCardTransform = (index: number) => {
-        const total = services.length;
-        // Calculate the offset from the active card
-        let offset = index - activeIndex;
+    const getServiceData = (continuousIndex: number) => {
+        const actualIndex = ((continuousIndex % totalCards) + totalCards) % totalCards;
+        return services[actualIndex];
+    };
 
-        // Normalize offset for wrapping - this creates the infinite loop feel
-        if (offset > total / 2) offset -= total;
-        if (offset < -total / 2) offset += total;
+    const visibleIndices = [];
+    for (let i = centerIndex - VISIBLE_CARDS; i <= centerIndex + VISIBLE_CARDS; i++) {
+        visibleIndices.push(i);
+    }
 
-        // Card spacing in pixels
+    const getCardTransform = (continuousIndex: number) => {
+        const offset = continuousIndex - centerIndex;
+
         const cardSpacing = 320;
 
-        // Horizontal position - linear movement
         const x = offset * cardSpacing;
 
-        // CURVED ARC: Y position follows a parabolic curve (sides dip down)
         const y = Math.pow(Math.abs(offset), 1.6) * 40;
 
-        // NO SCALE - cards stay same size like in reference
         const scale = 1;
 
-        // Tilt rotation on Z-axis (cards tilt outward from center)
-        // Left cards tilt counter-clockwise, right cards tilt clockwise
         const rotateZ = offset * 4;
 
-        // Only show cards within visible range for seamless infinite feel
-        // Cards beyond ±2 positions are hidden
-        // const isVisible = Math.abs(offset) <= 2.5;
-        // const opacity = isVisible ? Math.max(1 - Math.abs(offset) * 0.8, 0.6) : 0;
-        const opacity = 1
-        // Z-index for layering (center card on top)
+        const opacity = 1;
+
         const zIndex = 100 - Math.abs(offset) * 10;
 
         return { x, y, scale, opacity, zIndex, rotateZ };
     };
 
+    const realActiveIndex = ((centerIndex % totalCards) + totalCards) % totalCards;
+
+    const handleDotClick = (targetRealIndex: number) => {
+        const currentReal = realActiveIndex;
+        let diff = targetRealIndex - currentReal;
+
+        if (diff > totalCards / 2) diff -= totalCards;
+        if (diff < -totalCards / 2) diff += totalCards;
+
+        setCenterIndex((p) => p + diff);
+    };
+
     return (
-        <section className="relative min-h-[700px] py-16 md:py-24 overflow-hidden bg-gradient-to-b from-[#e8f4f8] via-[#d4eef5] to-[#7dd3e8]">
-            {/* Background decorative elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-20 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
-                <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl" />
-            </div>
-
-            {/* Section Title */}
-            <div className="relative z-10 text-center mb-12 md:mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 tracking-tight">
-                    Services
+        <section className="relative overflow-hidden bg-linear-to-b from-[#e8f4f8] via-[#d4eef5] to-[#1FC0F3] py-20">
+            {/* Header Section */}
+            <div className="relative z-10 text-center mb-8 md:mb-12 px-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-regular text-gray-800 tracking-tight mb-3">
+                    How we support{" "}
+                    <span className="text-cyan-600">workplace learning</span>
                 </h2>
+                <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-sm mx-auto">
+                    Built to support skills across roles, levels, and growth stages.
+                </p>
+                <div className="relative z-10 text-center mb-6 md:mb-10 md:mt-10">
+                    <h3 className="text-xl sm:text-2xl md:text-5xl font-regular text-gray-800 tracking-tight">
+                        Services
+                    </h3>
+                </div>
             </div>
-
-            {/* 3D Carousel Container - Curtain/Plane Style */}
+            {/* Services Title */}
             <div
-                className="relative w-full h-[520px] md:h-[580px] flex items-start justify-center pt-8 overflow-hidden"
+                className="relative w-full h-[380px] md:h-[420px] flex items-start justify-center overflow-hidden"
                 style={{ perspective: "1000px" }}
                 onMouseEnter={() => setIsAutoPlaying(false)}
                 onMouseLeave={() => setIsAutoPlaying(true)}
             >
+
                 <div
                     className="relative w-full h-full flex items-center justify-center"
                     style={{ transformStyle: "preserve-3d" }}
                 >
-                    {services.map((service, index) => {
-                        const { x, y, scale, opacity, zIndex, rotateZ } = getCardTransform(index);
-                        const isActive = index === activeIndex;
+                    {visibleIndices.map((continuousIndex) => {
+                        const service = getServiceData(continuousIndex);
+                        const { x, y, scale, opacity, zIndex, rotateZ } = getCardTransform(continuousIndex);
+                        const isActive = continuousIndex === centerIndex;
 
                         return (
                             <motion.div
-                                key={service.title}
+                                key={continuousIndex}
                                 animate={{
                                     x,
                                     y,
@@ -147,9 +158,9 @@ const NewServiceSection = () => {
                                 }}
                                 transition={{
                                     duration: 0.5,
-                                    ease: [0.25, 0.1, 0.25, 1], // smooth cubic bezier
+                                    ease: [0.25, 0.1, 0.25, 1],
                                 }}
-                                onClick={() => setActiveIndex(index)}
+                                onClick={() => setCenterIndex(continuousIndex)}
                                 style={{
                                     zIndex,
                                     transformStyle: "preserve-3d",
@@ -179,13 +190,11 @@ const NewServiceSection = () => {
                                     </h3>
 
                                     {/* Subtitle */}
-                                    <p className="text-sm text-cyan-600 font-medium mb-2">
-                                        {service.subtitle}
-                                    </p>
+
 
                                     {/* Description - only show on active card */}
-                                    <AnimatePresence>
-                                        {isActive && (
+                                    <div className="flex justify-between items-center gap-2">
+                                        <AnimatePresence>
                                             <motion.p
                                                 initial={{ opacity: 0, height: 0 }}
                                                 animate={{ opacity: 1, height: "auto" }}
@@ -195,20 +204,21 @@ const NewServiceSection = () => {
                                             >
                                                 {service.description}
                                             </motion.p>
-                                        )}
-                                    </AnimatePresence>
+                                        </AnimatePresence>
 
-                                    {/* Arrow Link */}
-                                    <motion.a
-                                        href={service.link}
-                                        className="inline-flex items-center gap-1 mt-3 text-cyan-600 hover:text-cyan-700 text-sm font-medium group"
-                                        whileHover={{ x: 5 }}
-                                        transition={{ duration: 0.2 }}
-                                    >
-                                        <span className="w-7 h-7 rounded-full border border-cyan-600 flex items-center justify-center group-hover:bg-cyan-600 group-hover:text-white transition-colors">
-                                            →
-                                        </span>
-                                    </motion.a>
+                                        {/* Arrow Link */}
+                                        <motion.a
+                                            href={service.link}
+                                            className="inline-flex items-center gap-1 mt-3 text-cyan-600 hover:text-cyan-700 text-sm font-medium group"
+                                            whileHover={{ x: 5 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
+                                            <span className="w-7 h-7 rounded-full border border-cyan-600 flex items-center justify-center group-hover:bg-cyan-600 group-hover:text-white transition-colors">
+                                                →
+                                            </span>
+                                        </motion.a>
+                                    </div>
+
                                 </div>
                             </motion.div>
                         );
@@ -217,7 +227,7 @@ const NewServiceSection = () => {
             </div>
 
             {/* Navigation Controls */}
-            <div className="relative z-10 flex items-center justify-center gap-4 mt-8">
+            <div className="relative z-10 flex items-center justify-center gap-4 mt-10">
                 <motion.button
                     onClick={prev}
                     whileHover={{ scale: 1.1 }}
@@ -236,8 +246,8 @@ const NewServiceSection = () => {
                     {services.map((_, index) => (
                         <button
                             key={index}
-                            onClick={() => setActiveIndex(index)}
-                            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === activeIndex
+                            onClick={() => handleDotClick(index)}
+                            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === realActiveIndex
                                 ? "bg-cyan-600 w-8"
                                 : "bg-gray-400/50 hover:bg-gray-500"
                                 }`}
@@ -258,6 +268,7 @@ const NewServiceSection = () => {
                     </svg>
                 </motion.button>
             </div>
+
         </section>
     );
 };

@@ -10,11 +10,11 @@ import SuccessStories from './successStories'
 const LandingPage = () => {
     return (
         <>
-            {/* <Hero /> */}
-            <Clientele />
-            <ServiceSection />
+
+            <Hero />
+            {/* <ServiceSection /> */}
             <NewServiceSection />
-            <CompanyMoto />
+            {/* <CompanyMoto /> */}
             <SuccessStories />
             <Outcome />
             <NotLast />

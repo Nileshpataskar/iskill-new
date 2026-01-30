@@ -4,7 +4,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import CompanyCard from '../companyCard';
 import Link from 'next/link';
 import { successStories } from '@/app/data/successStoriesData';
 
@@ -36,120 +35,180 @@ const SuccessStories = () => {
     const groupsRef = useRef<HTMLDivElement[]>([]);
 
     const groups = useMemo(() => chunkArray(successData, 3), []);
-    const SCROLL_VH_PER_GROUP = 1.5;
-    const EXTRA_SCROLL_VH = 1.2;
+    const SCROLL_VH_PER_GROUP = 0.6;
 
     useEffect(() => {
         if (!sectionRef.current) return;
 
         const ctx = gsap.context(() => {
             groupsRef.current.forEach((group, index) => {
-                const start = index * SCROLL_VH_PER_GROUP * window.innerHeight;
-                const end = (index + 1) * SCROLL_VH_PER_GROUP * window.innerHeight;
+                if (index === 0) {
+                    // First group: visible immediately, fades out when scrolling
+                    gsap.set(group, { autoAlpha: 1, y: 0 });
 
-                gsap.fromTo(
-                    group,
-                    { autoAlpha: 0, y: 50 },
-                    {
-                        autoAlpha: 1,
-                        y: 0,
-                        ease: 'power3.out',
+                    gsap.to(group, {
+                        autoAlpha: 0,
+                        y: -20,
+                        ease: 'power2.in',
                         scrollTrigger: {
                             trigger: sectionRef.current,
-                            start: `top+=${start}px top`,
-                            end: `top+=${end}px top`,
+                            start: `top+=${SCROLL_VH_PER_GROUP * window.innerHeight * 0.7}px top`,
+                            end: `top+=${SCROLL_VH_PER_GROUP * window.innerHeight}px top`,
                             scrub: true,
                         },
+                    });
+                } else {
+                    // Other groups: fade in and out on scroll
+                    const startIn = (index - 0.3) * SCROLL_VH_PER_GROUP * window.innerHeight;
+                    const endIn = index * SCROLL_VH_PER_GROUP * window.innerHeight;
+                    const startOut = (index + 0.7) * SCROLL_VH_PER_GROUP * window.innerHeight;
+                    const endOut = (index + 1) * SCROLL_VH_PER_GROUP * window.innerHeight;
+
+                    // Fade in
+                    gsap.fromTo(
+                        group,
+                        { autoAlpha: 0, y: 30 },
+                        {
+                            autoAlpha: 1,
+                            y: 0,
+                            ease: 'power3.out',
+                            scrollTrigger: {
+                                trigger: sectionRef.current,
+                                start: `top+=${startIn}px top`,
+                                end: `top+=${endIn}px top`,
+                                scrub: true,
+                            },
+                        }
+                    );
+
+                    // Fade out (except last group)
+                    if (index < groups.length - 1) {
+                        gsap.to(group, {
+                            autoAlpha: 0,
+                            y: -20,
+                            ease: 'power2.in',
+                            scrollTrigger: {
+                                trigger: sectionRef.current,
+                                start: `top+=${startOut}px top`,
+                                end: `top+=${endOut}px top`,
+                                scrub: true,
+                            },
+                        });
                     }
-                );
+                }
             });
         }, sectionRef);
 
         return () => ctx.revert();
     }, [groups]);
 
-    const totalHeightVh =
-        (groups.length * SCROLL_VH_PER_GROUP + EXTRA_SCROLL_VH) * 100;
+    const totalHeightVh = (groups.length * SCROLL_VH_PER_GROUP + 0.3) * 100;
 
     return (
         <section
             ref={sectionRef}
-            className="relative w-full bg-[#1d2a4a] bg-top bg-no-repeat -mt-40"
+            className="relative w-full bg-[#1FC0F3]"
             style={{
                 minHeight: `${totalHeightVh}vh`,
-                // backgroundImage: 'url(/landing/success-bg.png)'
-
             }}
         >
-            {/* Decorative background elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
-            </div>
-
-            <div className="sticky top-0 h-screen flex items-center px-4 md:px-8 z-10">
-                <div className="relative max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <div className="sticky top-0 min-h-screen flex items-center px-4 md:px-8 py-12">
+                <div className="relative max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                     {/* LEFT */}
-                    <div className="flex flex-col justify-center text-center md:text-left space-y-6">
-                        {/* Badge */}
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 w-fit mx-auto md:mx-0">
-                            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                            <span className="text-xs font-medium text-white/90 uppercase tracking-wide">Trusted by Leaders</span>
-                        </div>
-
+                    <div className="flex flex-col justify-center text-center lg:text-left space-y-5">
                         {/* Main Heading */}
-                        <div className="space-y-5">
-                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                                <span className="bg-linear-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-                                    Success Stories
-                                </span>
-                            </h2>
-                            <div className="w-24 h-1.5 bg-linear-to-r from-blue-400 via-purple-500 to-blue-400 rounded-full mx-auto md:mx-0"></div>
-                        </div>
+                        <h2
+                            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
+                            style={{ fontFamily: "var(--font-inter), 'Segoe UI', sans-serif" }}
+                        >
+                            Success Stories
+                        </h2>
 
                         {/* Description */}
-                        <div className="space-y-4">
-                            <p className="text-lg md:text-xl text-white/90 max-w-lg leading-relaxed">
-                                Behind every milestone is a story of <span className="text-white font-semibold">collaboration</span>, <span className="text-white font-semibold">innovation</span>, and <span className="text-white font-semibold">measurable growth</span>.
+                        <div className="space-y-3">
+                            <p
+                                className="text-base md:text-lg text-white max-w-md leading-relaxed mx-auto lg:mx-0"
+                                style={{ fontFamily: "var(--font-inter), 'Segoe UI', sans-serif" }}
+                            >
+                                Behind every milestone is a story of <span className="text-gray-100 font-bold">collaboration</span>, <span className="text-gray-100 font-bold">innovation</span>, and <span className="text-gray-100 font-bold">measurable growth</span>.
                             </p>
-                            <p className="text-base text-white/70 max-w-lg">
+                            <p
+                                className="text-sm md:text-base text-white max-w-md mx-auto lg:mx-0"
+                                style={{ fontFamily: "var(--font-inter), 'Segoe UI', sans-serif" }}
+                            >
                                 Explore how iSkillBox helps organizations learn smarter and achieve faster.
                             </p>
                         </div>
 
                         {/* Stats */}
-                        <div className="flex flex-wrap gap-8 pt-2 justify-center md:justify-start">
-                            <div className="flex flex-col">
-                                <span className="text-3xl md:text-4xl font-bold text-white">{successData.length}+</span>
-                                <span className="text-sm text-white/70 mt-1">Success Stories</span>
+                        <div className="flex flex-wrap gap-10 pt-2 justify-center lg:justify-start">
+                            <div className="flex flex-col items-center lg:items-start">
+                                <span
+                                    className="text-3xl md:text-4xl font-bold text-white"
+                                    style={{ fontFamily: "var(--font-inter), 'Segoe UI', sans-serif" }}
+                                >
+                                    {successData.length}+
+                                </span>
+                                <span className="text-xs text-white mt-0.5">Success Stories</span>
                             </div>
-                            <div className="flex flex-col">
-                                <span className="text-3xl md:text-4xl font-bold text-white">100%</span>
-                                <span className="text-sm text-white/70 mt-1">Client Satisfaction</span>
+                            <div className="flex flex-col items-center lg:items-start">
+                                <span
+                                    className="text-3xl md:text-4xl font-bold text-white"
+                                    style={{ fontFamily: "var(--font-inter), 'Segoe UI', sans-serif" }}
+                                >
+                                    100%
+                                </span>
+                                <span className="text-xs text-white mt-0.5">Client Satisfaction</span>
                             </div>
                         </div>
                     </div>
 
-                    {/* RIGHT */}
-                    <div className="relative min-h-[420px]">
+                    {/* RIGHT - Cards */}
+                    <div className="relative min-h-[360px]">
                         {groups.map((group, groupIndex) => (
                             <div
                                 key={groupIndex}
                                 ref={(el) => {
                                     if (el) groupsRef.current[groupIndex] = el;
                                 }}
-                                className="absolute inset-0 opacity-0 flex flex-col gap-6"
+                                className={`absolute inset-0 flex flex-col gap-4 ${groupIndex === 0 ? 'opacity-100' : 'opacity-0'}`}
                             >
                                 {group.map((item, idx) => (
                                     <Link
                                         key={`${groupIndex}-${idx}`}
                                         href={`/success-stories/${item.slug}`}
-                                        className="block"
+                                        className="block group"
                                     >
-                                        <CompanyCard
-                                            logo={item.logo}
-                                            description={item.description}
-                                        />
+                                        <div className="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4 border border-gray-100">
+                                            {/* Logo */}
+                                            <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 rounded-xl bg-gradient-to-br from-slate-700 to-slate-800 shadow-md flex items-center justify-center p-3 group-hover:shadow-lg transition-shadow duration-300">
+                                                <img
+                                                    src={item.logo}
+                                                    alt="Company logo"
+                                                    className="w-full h-full object-contain"
+                                                />
+                                            </div>
+                                            {/* Content */}
+                                            <div className="flex-1 min-w-0">
+                                                <p
+                                                    className="text-sm md:text-base text-gray-700 line-clamp-2"
+                                                    style={{ fontFamily: "var(--font-inter), 'Segoe UI', sans-serif" }}
+                                                >
+                                                    {item.description}
+                                                </p>
+                                            </div>
+                                            {/* Arrow */}
+                                            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 group-hover:bg-blue-500 flex items-center justify-center transition-colors duration-300">
+                                                <svg
+                                                    className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors duration-300"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                        </div>
                                     </Link>
                                 ))}
                             </div>
@@ -158,7 +217,7 @@ const SuccessStories = () => {
                 </div>
             </div>
 
-            <div className="h-[120vh]" />
+            <div className="h-[30vh]" />
         </section>
     );
 };

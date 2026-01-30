@@ -1,49 +1,81 @@
+'use client'
 import React from 'react'
 
 interface ClienteleProps {
     background?: boolean
 }
 
-const Clientele = ({ background = true }: ClienteleProps) => {
-    const backgroundStyle = background ? {
-        backgroundImage: 'url(/landing/clientele-bg.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-    } : {}
+const Clientele = () => {
+    const logoCount = 15;
 
     return (
-        <div 
-            className='w-full py-16 md:py-20 lg:py-24 bg-white'
-            style={backgroundStyle}
-        >
-            <div className='max-w-7xl mx-auto px-4 md:px-6 lg:px-8'>
-                <h2 className='text-2xl md:text-xl font-regular text-gray-400 text-center mb-8 md:mb-12 md:pt-8'>
-                    Globally Trusted by Top Clientele
-                </h2>
-                <div className='relative overflow-hidden'>
-                    <div
-                        className='flex gap-8 md:gap-12 lg:gap-16'
-                        style={{ animation: 'marquee 10s linear infinite' }}
-                    >
+        <>
+            {/* Client Logos Section */}
+            <div className='w-full px-4 md:px-6 lg:px-8 mt-20'>
+                {/* Subtitle */}
+                <p
+                    className='text-sm md:text-base text-gray-900 text-center mb-8'
+                    style={{ fontFamily: "var(--font-inter), 'Segoe UI', sans-serif" }}
+                >
+                    Chosen by organizations that value real capability.
+                </p>
+
+                {/* Marquee container with overflow hidden */}
+                <div className='relative overflow-hidden w-full'>
+                    {/* Fade edges */}
+                    <div className='absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-[#b8e4f0] to-transparent z-10 pointer-events-none' />
+                    <div className='absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-[#b8e4f0] to-transparent z-10 pointer-events-none' />
+
+                    {/* Marquee track */}
+                    <div className='flex animate-marquee'>
                         {/* First set of logos */}
-                        {Array.from({ length: 15 }, (_, i) => i + 1).map((num) => (
+                        {Array.from({ length: logoCount }, (_, i) => i + 1).map((num) => (
                             <div
                                 key={`first-${num}`}
-                                className='shrink-0 flex items-center justify-center'
+                                className='flex-shrink-0 flex items-center justify-center mx-8 md:mx-12'
                             >
                                 <img
                                     src={`/ClientLogo/${num}.webp`}
                                     alt={`Client ${num}`}
-                                    className={`h-16 md:h-20 lg:h-24 w-auto object-contain transition-all duration-300 opacity-80 hover:opacity-100 ${background ? 'grayscale hover:grayscale-0' : ''}`}
+                                    className='h-10 md:h-12 lg:h-14 w-auto object-contain opacity-80'
                                 />
                             </div>
                         ))}
-                       
+                        {/* Duplicate set for seamless loop */}
+                        {Array.from({ length: logoCount }, (_, i) => i + 1).map((num) => (
+                            <div
+                                key={`second-${num}`}
+                                className='flex-shrink-0 flex items-center justify-center mx-8 md:mx-12'
+                            >
+                                <img
+                                    src={`/ClientLogo/${num}.webp`}
+                                    alt={`Client ${num}`}
+                                    className='h-10 md:h-12 lg:h-14 w-auto object-contain opacity-80'
+                                />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
-        </div>
+
+            {/* CSS for marquee animation */}
+            <style jsx>{`
+                    @keyframes marquee {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                    }
+                    .animate-marquee {
+                        animation: marquee 25s linear infinite;
+                    }
+                    .animate-marquee:hover {
+                        animation-play-state: paused;
+                    }
+                `}</style>
+        </>
     )
 }
 
