@@ -185,7 +185,7 @@ const NewServiceSection = () => {
                                 {/* Card Content */}
                                 <div className="p-3 sm:p-4 md:p-5">
                                     {/* Image Container */}
-                                    <div className="relative w-full h-[100px] sm:h-[130px] md:h-[160px] mb-3 sm:mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                                    <div className="relative w-full h-[100px] sm:h-[130px] md:h-[160px] mb-3 sm:mb-4 rounded-xl overflow-hidden bg-linear-to-br from-gray-50 to-gray-100">
                                         <Image
                                             src={service.image}
                                             alt={service.title}

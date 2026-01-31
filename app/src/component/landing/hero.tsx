@@ -70,7 +70,7 @@ const Hero = () => {
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
                         className="inline-flex items-center gap-3 px-8 py-4 md:px-10 md:py-3 
-                            bg-gradient-to-r from-blue-500 to-blue-600 
+                            bg-linear-to-r from-blue-500 to-blue-600 
                             text-white text-lg md:text-xl 
                             rounded-full shadow-lg hover:shadow-2xl 
                             transition-all duration-300"

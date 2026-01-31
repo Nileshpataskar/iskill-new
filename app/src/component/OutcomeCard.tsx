@@ -37,7 +37,7 @@ const OutcomeCard = ({ text, author, designation, company }: OutcomeCardProps) =
       </div>
 
       {/* Testimonial Text */}
-      <p className="text-gray-700 max-h-32 sm:max-h-36 md:max-h-40 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base flex-grow pt-2 sm:pt-3 overflow-y-auto">
+      <p className="text-gray-700 max-h-32 sm:max-h-36 md:max-h-40 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base grow pt-2 sm:pt-3 overflow-y-auto">
         {text}
       </p>
 
