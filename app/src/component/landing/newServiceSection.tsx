@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const services = [
     {
-        image: "/service/training.svg",
+        image: "/service/skill.svg",
         title: "Skill Gap Analysis",
         subtitle: "Spot the gaps. Spark the growth.",
         description:
@@ -22,7 +22,7 @@ const services = [
         link: "/about",
     },
     {
-        image: "/service/training.svg",
+        image: "/service/group.svg",
         title: "1:1 & Group Coaching",
         subtitle: "Coaching that creates momentum.",
         description:

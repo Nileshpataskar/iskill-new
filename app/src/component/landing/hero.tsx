@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import Clientele from "./clientele";
 import Statistics from "./statistics";
 
-const rotatingWords = [" invent", " lead", " adapt in the age of AI", " impact"];
+const rotatingWords = [" invent in the age of AI", " lead in the age of AI", " adapt in the age of AI"];
 
 const Hero = () => {
     const [wordIndex, setWordIndex] = useState(0);
