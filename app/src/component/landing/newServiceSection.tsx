@@ -22,7 +22,7 @@ const services = [
         link: "/about",
     },
     {
-        image: "/service/group.svg",
+        image: "/service/coaching.svg",
         title: "1:1 & Group Coaching",
         subtitle: "Coaching that creates momentum.",
         description:
@@ -30,7 +30,7 @@ const services = [
         link: "/about",
     },
     {
-        image: "/service/lms.svg",
+        image: "/service/lms.jpg",
         title: "eLearning & LMS",
         subtitle: "Content that performs. Platforms that scale.",
         description:

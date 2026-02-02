@@ -22,9 +22,8 @@ const Hero = () => {
             className='w-full relative bg-cover bg-center bg-no-repeat'
             style={{ backgroundImage: `url(/landing/heroNew.svg)` }}
         >
-            {/* First Screen - Hero Content Centered */}
             <div className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8">
-                <div className="text-center max-w-4xl mx-auto mt-24 sm:mt-32 md:mt-40 lg:mt-60">
+                <div className="text-center max-w-4xl mx-auto mt-20 sm:mt-20 md:mt-20 ">
                     {/* Main Heading */}
                     <h1
                         className="text-4xl md:text-7xl text-gray-800 mb-6 tracking-tight font-light"
@@ -87,7 +86,7 @@ const Hero = () => {
             </div>
 
             {/* Below fold - flows naturally based on content */}
-            <div className="pb-16">
+            <div className="pb-4">
                 <Clientele />
                 <Statistics />
             </div>
