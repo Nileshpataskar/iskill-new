@@ -1,7 +1,10 @@
 import Clientele from './clientele'
 import CompanyMoto from './CompanyMoto'
 import Hero from './hero'
+import LetsConnect from './letsConnect'
+import NewOutcome from './newOutcome'
 import NewServiceSection from './newServiceSection'
+import NewSuccessStories from './newSuccessStories'
 import NotLast from './notLast'
 import Outcome from './outcome'
 import ServiceSection from './serviceSection'
@@ -15,8 +18,11 @@ const LandingPage = () => {
             {/* <ServiceSection /> */}
             <NewServiceSection />
             {/* <CompanyMoto /> */}
-            <SuccessStories />
-            <Outcome />
+            <NewSuccessStories />
+            {/* <SuccessStories /> */}
+            <NewOutcome />
+            {/* <Outcome /> */}
+            <LetsConnect />
             <NotLast />
         </>
     )

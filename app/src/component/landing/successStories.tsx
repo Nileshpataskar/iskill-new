@@ -107,7 +107,7 @@ const SuccessStories = () => {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full bg-[#1FC0F3]"
+            className="relative w-full bg-[#73cfeb]"
             style={{
                 minHeight: `${totalHeightVh}vh`,
             }}

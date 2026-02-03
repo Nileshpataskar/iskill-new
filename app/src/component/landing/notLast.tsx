@@ -5,8 +5,7 @@ const NotLast = () => {
         <section className="bg-[#161c2d] flex flex-col items-center text-white/90 min-h-[auto] sm:min-h-[35vh] md:min-h-[50vh] pt-8 sm:pt-12 md:pt-20 pb-4 sm:pb-0 font-sans ">
             <div className='flex flex-col items-center w-full gap-4 sm:gap-6 px-4 sm:px-6 md:px-8 lg:px-12'>
                 <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold leading-tight'>
-                    Let's Connect
-                </h1>
+                    Want to Discuss?  </h1>
                 <p className='text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl sm:max-w-4xl text-center leading-relaxed text-white/80'>
                     Have a question, a requirement, or just exploring possibilities? Share a few details and our team will get back to you shortly.   </p>
                 {/* <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold leading-tight'>

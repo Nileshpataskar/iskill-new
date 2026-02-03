@@ -22,8 +22,8 @@ const Hero = () => {
             className='w-full relative bg-cover bg-center bg-no-repeat'
             style={{ backgroundImage: `url(/landing/heroNew.svg)` }}
         >
-            <div className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8">
-                <div className="text-center max-w-4xl mx-auto mt-20 sm:mt-20 md:mt-20 ">
+            <div className="min-h-fit flex flex-col items-center justify-center px-4 sm:px-6 md:px-8">
+                <div className="text-center max-w-4xl mx-auto mt-28 sm:mt-40 md:mt-40 ">
                     {/* Main Heading */}
                     <h1
                         className="text-4xl md:text-7xl text-gray-800 mb-6 tracking-tight font-light"

@@ -122,7 +122,7 @@ const NewServiceSection = () => {
     };
 
     return (
-        <section className="relative overflow-hidden bg-linear-to-b from-[#e8f4f8] via-[#d4eef5] to-[#1FC0F3] py-20">
+        <section className="relative overflow-hidden bg-linear-to-b from-[#fff] via-[#d4eef5] to-[#73cfeb] py-20">
             {/* Header Section */}
             <div className="relative z-10 text-center mb-8 md:mb-12 px-4">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-regular text-gray-800 tracking-tight mb-3">
